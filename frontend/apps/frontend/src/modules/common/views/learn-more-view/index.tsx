@@ -51,7 +51,7 @@ export const LearnMoreView: NextPage = () => {
 						className="flex flex-row items-center w-full gap-2 justify-left"
 						style={{ marginTop: "20px" }}
 					>
-						<a href="/sign-in" className="btn btn-lg">
+						<a href="/sign-in" className="btn btn-lg"  style={{borderRadius:"15px"}}>
 							Sign Up
 						</a>
 					</div>

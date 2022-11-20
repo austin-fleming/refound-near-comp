@@ -30,6 +30,7 @@ export const HomeView : NextPage = () => {
 	// 	});
 	// };
 
+
 return (
 	<div>
 		<section className="relative w-full h-[110vh] pt-headerTopHeight">
@@ -48,10 +49,10 @@ return (
 					<p className="relative text-xl">Empowered and Protected on the Blockchain</p>
 
 					<div className="flex flex-row gap-4">
-						<a href="/sign-in" className="btn btn-lg">
+						<a href="/sign-in" className="btn btn-lg" style={{borderRadius:"15px"}}>
 							Sign Up
 						</a>
-						<a href="/learn-more" className="btn btn-lg btn-outline">
+						<a href="/learn-more" className="btn btn-lg btn-outline" style={{borderRadius:"15px"}}>
 						Learn More
 						</a>
 					</div>
@@ -326,6 +327,42 @@ return (
 					</Card>
 				</Grid>
 			</Grid>
+			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Revenue Sharing
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Journalists can share revenue from their photos and articles with those impacted by conflict. The smart contract would have the royalties split between the journalist and the NGO or to the person photographed.
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1Cv1TN78IHtLjhr_2M33tJrJ2_EBV3HvX"
+						/>
+					</Card>
+				</Grid>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Proof of Witness
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+							 Allows a multisig wallet sign-in to allow a local NGO, a local governing body, and up to 2 eye witnesses to authenticate the veracity (verification) of the photo or article content.
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }} 
+							image="https://drive.google.com/uc?export=view&id=1xT1ufbim1zYjZJcU2Yl_t72vnLhlVLKS"
+						/>
+					</Card>
+				</Grid>
+			</Grid>
 
 			{/* <Grid container justifyContent="left" sm={10} style={{ margin: "0 auto" }}>
 				<h1
@@ -367,7 +404,7 @@ return (
 				sm={8}
 				style={{ margin: "0 auto", marginBottom: "5%" }}
 			>
-				<a href="/sign-in" className="btn btn-lg backgroundColorAccent">
+				<a href="/sign-in" className="btn btn-lg backgroundColorAccent"  style={{borderRadius:"15px"}}>
 							Sign Up
 						</a>
 			</Grid>
