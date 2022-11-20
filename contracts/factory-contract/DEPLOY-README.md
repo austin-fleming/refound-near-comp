@@ -20,7 +20,7 @@ near view sub.<factory-account> get_beneficiary
 stored contract on it.
 
 ```bash
-near call <factory-account> create_factory_subaccount_and_deploy_crowdfunding '{ "name": "crowdfunding", "owner": "<account-to-be-owner>"}' --deposit 1.24 --accountId <account-id> --gas 300000000000000
+near call <factory-account> create_factory_subaccount_and_deploy_crowdfunding '{ "name": "crowdfunding", "owner": "<account-to-be-owner>"}' --deposit 1.57 --accountId <account-id> --gas 300000000000000
 ```
 
 ## 3. Deploy the Lockup Contract Into a Sub-Account
