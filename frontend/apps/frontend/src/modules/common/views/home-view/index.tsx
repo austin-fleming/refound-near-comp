@@ -58,7 +58,7 @@ return (
 				</div>
 
 				<figure className="absolute top-0 bottom-0 right-0 w-[100%] z-0">
-					<NextImage src={HeroImage} layout="fill" objectFit="cover" />
+					<NextImage src={HeroImage} layout="fill" objectFit="cover"/>
 					<span className="relative block w-full h-full bg-gradient-to-l from-background/80 to-background" />
 				</figure>
 			</div>
@@ -67,25 +67,42 @@ return (
 				container
 				justifyContent="center"
 				sm={8}
-				style={{ margin: "0 auto", padding: "5%", paddingTop: "2%" }}
+				style={{ margin: "0 auto", padding: "5%", paddingTop: "2%", paddingBottom:"1%" }}
 			>
-				<h1 style={{ fontSize: "3em" }} className="accentColor font-bold">
+				<h1 style={{ fontSize: "3em", textAlign:"center" }} className="accentColor font-bold">
 					Mint the art of journalism back to life.
 				</h1>
-				<p>
-					Refound’s mission is part of the Regenerative Finance (ReFi) movement,
-					specifically to leverage blockchain technology to help the community of conflict
-					zone journalists and photographers to directly sell their content to the public
-					and news media at higher margins and with greater financial control, helping
-					regenerate their economic cycle. Our decentralized application provides
-					journalists a platform to share their content, monetize it, and maintain
-					anonymity and safety by using a wallet sign-in.
-				</p>
+				
 			</Grid>
-
+			<Grid container>
+				<Grid item md={4}></Grid>
+				<Grid item sm={12} md={4} style={{margin:"0 2%"}}>
+						<p style={{display: "inline-block", marginRight: "20px"}}>Powered by</p>
+						<img style={{display: "inline-block", marginRight: "20px" }} src="https://drive.google.com/uc?export=view&id=1iwOakeo6AmeeOfrKqPd1zZDYTMaZyEwb" width="100"></img>
+						<img style={{display: "inline-block", marginRight: "20px"}}  width="100" src="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"></img>
+						<img style={{display: "inline-block", marginRight: "20px"}} width="50" src="https://drive.google.com/uc?export=view&id=1oPSpKyLZg_BY-i7EK6_WKF7xipPfxhTa"></img>
+						<img style={{display: "inline-block"}} width="60" src="https://drive.google.com/uc?export=view&id=14rxatVrOXGELTgKniBFuTN2bd1zS9ESe"></img>
+				</Grid>
+				<Grid item md={4}></Grid>
+			</Grid>
+			<Grid container
+				justifyContent="center"
+				style={{ margin: "0 auto", padding: "5%", paddingTop: "2%" }}>
+				<Grid item sm={8}>
+					<p style={{textAlign:"center", lineHeight:"1.8em"}}>
+						Refound’s mission is part of the Regenerative Finance (ReFi) movement,
+						specifically to leverage blockchain technology to help the community of conflict
+						zone journalists and photographers to directly sell their content to the public
+						and news media at higher margins and with greater financial control, helping
+						regenerate their economic cycle. Our decentralized application provides
+						journalists a platform to share their content, monetize it, and maintain
+						anonymity and safety by using a wallet sign-in.
+					</p>
+				</Grid>
+			</Grid>
 			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 300 }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div" className="accentColor">
 								Immutable and Decentralized
@@ -100,16 +117,16 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1JgaxFrDXKYGj7Aj4314fbL-zdx4achOz"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1AIa2MzZwM9aVZxAKL_C1srYwK4jR2VXv"
 						/>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 300 }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								NFT smart contracts
+								NFT Smart Contracts
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
 								Journalists benefit from the utility of the NFT smart contracts,
@@ -121,8 +138,8 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "64px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1W6k73Z5AnZ1DdqOZuGcxpW7K6fXURNNz"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1bEspbn-09HkoZX8TknAFgY5o5eXgXhIl"
 						/>
 					</Card>
 				</Grid>
@@ -143,8 +160,8 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto", marginTop: "5%" }}
-							image="https://drive.google.com/uc?export=view&id=1OvxAnifkR1YtqbYOgjsxXJZH2i1K4P7g"
+							style={{ maxWidth: "150px", margin: "0 auto", marginTop: "5%" }}
+							image="https://drive.google.com/uc?export=view&id=1if2YgQXUDxuwbaPwRkQYLRY1qXZ8W8JZ"
 						/>
 					</Card>
 				</Grid>
@@ -152,7 +169,7 @@ return (
 					<Card sx={{ maxWidth: 600, height: 300 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Cryptocurrency benefits
+								Cryptocurrency Benefits
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
 								Ease of payment to journalists and their local sources, fixers, and
@@ -165,18 +182,18 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1NpDCcdG--vG_3rqZE123kcH5CDRqUVIc"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"
 						/>
 					</Card>
 				</Grid>
 			</Grid>
 			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 400 }}>
+					<Card sx={{ maxWidth: 600, height: 450 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Decentralized content moderation
+								Decentralized Content Moderation
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
 								Community governance is utilized for content moderation which
@@ -194,13 +211,13 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "64px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1xDlcNhJwf9IYERirjIhdeKelXWx1Q5X0"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1AIa2MzZwM9aVZxAKL_C1srYwK4jR2VXv"
 						/>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 400 }}>
+					<Card sx={{ maxWidth: 600, height: 450 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div" className="accentColor" >
 								Support for journalists: Funding pools and bonus payments
@@ -216,8 +233,8 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "64px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1KnM5hkRsHlfuDrOJv5rvdZvCSiC9ZEj6"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1za8Aqy87MRCFO-9C-zQ6TNm09kru4TyM"
 						/>
 					</Card>
 				</Grid>
@@ -225,10 +242,10 @@ return (
 			</Grid>
 			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
 			<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 300 }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Beneficiary wallet
+								Beneficiary Wallet
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
 								Having a beneficiary wallet where proceeds can go to a chosen
@@ -238,16 +255,16 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto", marginTop: "15%" }}
-							image="https://drive.google.com/uc?export=view&id=1K-VjnouHr4mXnCTtrFKHf_j7cwH5ZPTX"
+							style={{ maxWidth: "150px", margin: "0 auto"}}
+							image="https://drive.google.com/uc?export=view&id=1MkX4U53XFu2fLpmKFS_452dv9kLPuLfb"
 						/>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 300 }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Wallet based subscriptions feature
+								Wallet Based Subscriptions Feature
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
 								The Refound subscriptions feature allows viewers to subscribe to any
@@ -259,15 +276,15 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1WdAb0rw7M7xhmDv8Gxgz8i9I2OqhWQKs"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1tBO3Cr40zeSoBiP-mUcqD2HyH1wmE_l5"
 						/>
 					</Card>
 				</Grid>
 			</Grid>
 			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 300 }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
 								An on-chain SOS alert feature
@@ -281,13 +298,13 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1I9KtwmRwYD38BwsFLLwDuwFE2el4IoYb"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1452x4aUtPiezOASIrOLfCIrxs0nwkewx"
 						/>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 300 }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
 								Identity solutions
@@ -303,8 +320,8 @@ return (
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }} 
-							image="https://drive.google.com/uc?export=view&id=1GvZDLohATI50542luCRq9Fg6H7Znjvmt"
+							style={{ maxWidth: "150px", margin: "0 auto" }} 
+							image="https://drive.google.com/uc?export=view&id=1eyBawxYwVsArDp80Qwd0k4u5KdNqCmbk"
 						/>
 					</Card>
 				</Grid>
@@ -354,6 +371,7 @@ return (
 							Sign Up
 						</a>
 			</Grid>
+			
 	</div>
 	);
 }
