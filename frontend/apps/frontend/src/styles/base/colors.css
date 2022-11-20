@@ -42,6 +42,16 @@ Color contrast against default background go as follows:
 	--c-trust-none-bg: #eeeeee;
 	--c-trust-none-fg: #000;
 }
+
+.accentColor{
+	color:rgb(var(--c-accent-1--less))!important;
+}
+
+.backgroundColorAccent{
+	background-color: rgb(var(--c-accent-1--less))!important;
+	border-color: rgb(var(--c-accent-1--less))!important;
+}
+
 :root.dark {
 	--c-primary: 250 250 250;
 	--c-primary--less: 229 229 229;

@@ -9,6 +9,7 @@ import { CeloProvider } from "@modules/common/hooks/celo-context";
 import { AuthProvider } from "@modules/account/hooks/auth-context";
 import { AccountProvider } from "@modules/account/hooks/use-account";
 import { NearProvider } from "@modules/common/hooks/near-context";
+import "../styles/base/colors.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (
