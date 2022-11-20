@@ -21,6 +21,8 @@ Color contrast against default background go as follows:
 
 	--c-accent-2: 236 189 155;
 
+	--c-accent-3: 1 160	176;
+
 	/* UI ALERTS */
 	--c-ui-warn: #7d7100;
 	--c-ui-warn--bg: #f4f2de;
@@ -42,6 +44,16 @@ Color contrast against default background go as follows:
 	--c-trust-none-bg: #eeeeee;
 	--c-trust-none-fg: #000;
 }
+
+.accentColor{
+	color:rgb(var(--c-accent-3))!important;
+}
+
+.backgroundColorAccent{
+	background-color: rgb(var(--c-accent-3))!important;
+	border-color: rgb(var(--c-accent-3))!important;
+}
+
 :root.dark {
 	--c-primary: 250 250 250;
 	--c-primary--less: 229 229 229;
