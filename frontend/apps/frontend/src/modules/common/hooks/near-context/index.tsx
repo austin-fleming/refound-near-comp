@@ -88,16 +88,38 @@ export const NearProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		initNear();
 	}, []);
+	/**
+	 * https://docs.near.org/tools/near-api-js/quick-reference
+	 * Wrap functions for easy access
+	 */
 
-	const value: State = useMemo(
-		() => ({
-			near,
-			wallet,
-			isLoggedIn,
-			requestSignIn,
-			signOut,
-		}),
-		[near, wallet, isLoggedIn],
+	// TODO --  change smart-contract address connection into separate file
+	const requestSignIn = async () => {
+		await wallet.requestSignIn("refound.testnet", "Refound");
+	};
+
+	const signOut = async () => {
+		await wallet.signOut();
+	};
+
+	const checkSignedIn = async () => {
+		const signedIn = await wallet.isSignedIn();
+		console.log(signedIn);
+		return signedIn;
+	};
+
+	const context = {
+		near,
+		wallet,
+		requestSignIn,
+		signOut,
+		checkSignedIn,
+	};
+
+	return (
+		<>
+			<NearContext.Provider value={context}>{children}</NearContext.Provider>
+		</>
 	);
 
 	return <NearContext.Provider value={value}>{children}</NearContext.Provider>;
