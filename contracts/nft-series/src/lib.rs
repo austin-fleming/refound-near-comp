@@ -55,10 +55,11 @@ pub struct Series {
 }
 
 /// Struct to return in views to query for specific data related to a series
-#[derive(BorshDeserialize, BorshSerialize)]
+#[derive(BorshDeserialize, BorshSerialize, Serialize)]
+#[serde(crate = "near_sdk::serde")]
 pub struct VotingSeries {
     /// How much each accountID votes
-    votes: HashMap<AccountId, U128>,
+    votes: HashMap<AccountId, u32>,
     /// When the voting ended. `None` means the poll is still open.
     result: Option<WrappedTimestamp>,
 }

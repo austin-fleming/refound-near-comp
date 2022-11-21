@@ -14,6 +14,8 @@ pub struct JsonSeries {
     owner_id: AccountId,
     // Series Verified: If the series is verified by the votees
     verified: bool,
+    // Voting
+    vote: VotingSeries,
 }
 
 #[near_bindgen]
@@ -131,6 +133,7 @@ impl Contract {
                 royalty: series.royalty,
                 owner_id: series.owner_id,
                 verified: series.verified,
+                vote: series.vote,
             })
         } else {
             //if there isn't a series, we'll return None
