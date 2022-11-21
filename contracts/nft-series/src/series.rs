@@ -154,7 +154,7 @@ impl Contract {
     }
 
     /// Change Series Verification Status
-    pub fn change_series_verification_status(&mut self, id: u64, verified: bool) {
+    pub fn change_series_verification(&mut self, id: u64, verified: bool) {
         // Ensure the caller is an approved creator
         // let caller = env::predecessor_account_id();
         // require!(
