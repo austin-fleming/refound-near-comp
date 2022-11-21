@@ -131,7 +131,7 @@ return (
 							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
 							NGOs / Government Bodies / Eye Witnesses
 							</Typography>
-							<Typography variant="body2" color="text.secondary">Eye Witnesses, NGOs, and Government Bodies can verify content, helping build trust between journalists and the public.</Typography>
+							<Typography variant="body2" color="text.secondary">›</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
@@ -179,7 +179,7 @@ return (
 					Use Cases
 				</h1>
 				<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
+				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h6" component="div" className="accentColor">
@@ -196,11 +196,11 @@ return (
 						/>
 					</Card>
 				</Grid>
-				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
+				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
-							War Crimes Documentation
+								War Crimes Documentation
 							</Typography>
 							<Typography variant="body2" color="text.secondary">Our tools may also apply to war crimes providing a protocol for documentation and verification of events.</Typography>
 						</CardContent>
@@ -212,7 +212,7 @@ return (
 					</Card>
 				</Grid>
 				
-				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
+				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
@@ -228,6 +228,22 @@ return (
 					</Card>
 				</Grid>
 			</Grid>
+
+			<Grid item sm={12} md={3} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							Verified Documentation for International Donations
+							</Typography>
+							<Typography variant="body2" color="text.secondary">Gathering verified signatures and documentation for large donors for increased international funding to local NGOs.</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							image="https://drive.google.com/uc?export=view&id=1x8MHoz7C0hGxrBEnsQLWWbyT9mm27BOE"
+						/>
+					</Card>
+				</Grid>
 
 			<h1 style={{ fontSize: "2.5em", textAlign:"center" }} className="accentColor font-bold">
 					Features
