@@ -8,6 +8,7 @@ import { toast } from "@services/toast/toast";
 import { styles } from "@celo/react-celo/lib/modals";
 // import { useRefoundContracts } from "@modules/common/hooks/celo-context";
 
+import Typewriter from 'typewriter-effect';
 export const HomeView : NextPage = () => {
 	const [posts, setPosts] = useState<any>();
 	//const { getAllImagePosts } = useRefoundContracts();
@@ -42,7 +43,7 @@ return (
 							Journalism */}
 						<span className="text-[8vw] font-normal italic">the</span> <span className="accentColor">Platform</span>
 						<br />
-						<span className="text-[8vw] font-normal italic">for the</span>  <span className="accentColor">Frontline</span>
+						<span className="text-[8vw] font-normal italic">for verified</span>  <span className="accentColor">Journalism</span>
 						{/* Own the Stories You Share with the World */}
 					</h1>
 
@@ -70,10 +71,14 @@ return (
 				sm={8}
 				style={{ margin: "0 auto", padding: "5%", paddingTop: "2%", paddingBottom:"1%" }}
 			>
-				<h1 style={{ fontSize: "3em", textAlign:"center" }} className="accentColor font-bold">
-					Mint the art of journalism back to life.
-				</h1>
 				
+				<Typewriter
+					options={{
+						strings: ['	Mint with Proof of Verification.'],
+						autoStart: true,
+						loop: true
+					}}
+					/>
 			</Grid>
 			<Grid container>
 				<Grid item md={4}></Grid>
@@ -92,13 +97,257 @@ return (
 				<Grid item sm={8}>
 					<p style={{textAlign:"center", lineHeight:"1.8em"}}>
 						Refound’s mission is part of the Regenerative Finance (ReFi) movement,
-						specifically to leverage blockchain technology to help the community of conflict
-						zone journalists and photographers to directly sell their content to the public
+						specifically to leverage blockchain technology to help journalists and photographers directly sell their content to the public
 						and news media at higher margins and with greater financial control, helping
 						regenerate their economic cycle. Our decentralized application provides
 						journalists a platform to share their content, monetize it, and maintain
-						anonymity and safety by using a wallet sign-in.
+						anonymity and safety by using a wallet sign-in. 
 					</p>
+				</Grid>
+			</Grid>
+
+			<h1 style={{ fontSize: "2.5em", textAlign:"center" }} className="accentColor font-bold">
+					Who Are We Building For?
+				</h1>
+				<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h6" component="div" className="accentColor">
+								Citizen and Freelance Journalists
+							</Typography>
+							<Typography variant="body2" color="text.secondary">Our publishing platform allows journalists and photographers to share first person, creative content from the frontlines swiftly, raise awareness, and sell directly to businesses.</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "50px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1qvtNV6z1nc691q6TtcrigRJEaJgdqbKk"
+						/>
+					</Card>
+				</Grid>
+				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							NGOs / Government Bodies / Eye Witnesses
+							</Typography>
+							<Typography variant="body2" color="text.secondary">Eye Witnesses, NGOs, and Government Bodies can verify content, helping build trust between journalists and the public.</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							image="https://drive.google.com/uc?export=view&id=1knCpYtRgvBPHwqnzKblOy8HIEId2W1Hj"
+						/>
+					</Card>
+				</Grid>
+				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							The Media/Publications
+							</Typography>
+							<Typography variant="body2" color="text.secondary">A platform to curate and purchase licenses for direct, and verified frontline content. </Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							image="https://drive.google.com/uc?export=view&id=1Q-QSNh34BV2FJCwr7CQ02NjJX8azIZr3" 
+						/>
+					</Card>
+				</Grid>
+				
+				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							News Consumers
+							</Typography>
+							<Typography variant="body2" color="text.secondary">Consumers of our platform can curate their News feed and directly support Journalists.</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							image="https://drive.google.com/uc?export=view&id=1VzrmUYwKsGU4OnjwP8F31WA7yTFlI2xt"
+						/>
+					</Card>
+				</Grid>
+
+
+			</Grid>
+
+			<h1 style={{ fontSize: "2.5em", textAlign:"center" }} className="accentColor font-bold">
+					Use Cases
+				</h1>
+				<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h6" component="div" className="accentColor">
+								Verified Journalism
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+							Our smart contracts allow a multisig wallet sign-in by a local NGO, a local governing body, and up to 2 eye witnesses to authenticate the veracity (verification) of the photo or article content.
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "50px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1XJ24N-F8HTjkij4ZVUxziJ4ve64vt0Wj"
+						/>
+					</Card>
+				</Grid>
+				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							War Crimes Documentation
+							</Typography>
+							<Typography variant="body2" color="text.secondary">Our tools may also apply to war crimes providing a protocol for documentation and verification of events.</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							image="https://drive.google.com/uc?export=view&id=1x8MHoz7C0hGxrBEnsQLWWbyT9mm27BOE"
+						/>
+					</Card>
+				</Grid>
+				
+				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							Media Licensing Management
+							</Typography>
+							<Typography variant="body2" color="text.secondary">Our smart contracts give journalists the ability to create and manage multiple licenses with their NFTS and buyers the ability to purchase multiple use licenses for an NFT.</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							image="https://drive.google.com/uc?export=view&id=1dEYRKrCB1haGKzLyvrmaaNCtVQjyun4h"
+						/>
+					</Card>
+				</Grid>
+			</Grid>
+
+			<h1 style={{ fontSize: "2.5em", textAlign:"center" }} className="accentColor font-bold">
+					Features
+				</h1>			
+
+			
+				<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Simplified Publishing
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								We allow Journalists to swiftly create and sell NFTs of their content directly to news rooms, the media, and the public. 
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1452x4aUtPiezOASIrOLfCIrxs0nwkewx"
+						/>
+					</Card>
+				</Grid>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Automated Licensing
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Licenses are stored on chain and our smart contracts allow NFT minters to purchase multiple licenses for different uses.
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1bEspbn-09HkoZX8TknAFgY5o5eXgXhIl"
+						/>
+					</Card>
+				</Grid>
+			</Grid>
+			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 400 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Third Party Verification i.e Proof of Witness
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								When an NFT is created, it has to pass through our smart contract and it requires Third Party Verification in order for it to be validated as true and confirmed for minting. Allows a multisig wallet sign-in to allow a local NGO, a local governing body, and up to 2 eye witnesses to authenticate the veracity (verification) of the photo or article content.
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1Psj6Q25XRCsAEkURGdUFnksLfvplj7k_"
+						/>
+					</Card>
+				</Grid>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 400 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Publicly Visible Chain of Approvals
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								On chain data is public and transparent, displaying the verifying parties that were involved in verification.
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1lyMWSBpnWRq90lHuH-XK_V440TN1QIMv"
+						/>
+					</Card>
+				</Grid>
+			</Grid>
+			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								In app camera capability
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								to capture live photos for NFTs. This helps store the meta data of
+								time and place directly on the blockchain on IPFS and helping
+								viewers and newsrooms know that the image is not altered or
+								doctored.
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto", marginTop: "5%" }}
+							image="https://drive.google.com/uc?export=view&id=1if2YgQXUDxuwbaPwRkQYLRY1qXZ8W8JZ"
+						/>
+					</Card>
+				</Grid>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Cryptocurrency Benefits
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Ease of payment to journalists and their local sources, fixers, and
+								contacts in war zones and conflict zones via stable coin using a an
+								easy setup crypto wallet on Near. Cryptocurrency provides a transfer
+								of value that is much faster than banks, and much cheaper even in
+								cases of international transfers. Account transactions are publicly
+								auditable and secure, and easily accessible with a smartphone. 
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"
+						/>
+					</Card>
 				</Grid>
 			</Grid>
 			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
@@ -123,245 +372,7 @@ return (
 						/>
 					</Card>
 				</Grid>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								NFT Smart Contracts
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								Journalists benefit from the utility of the NFT smart contracts,
-								publishing their work as an NFT, allowing journalists greater
-								control of their intellectual property and greater revenue
-								visibility. NFTs on Refound are used for their utility to direct
-								content monetization, licensing, royalties, and ownership.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1bEspbn-09HkoZX8TknAFgY5o5eXgXhIl"
-						/>
-					</Card>
-				</Grid>
-			</Grid>
-			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 300 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								In app camera capability
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								to capture live photos for NFTs. This helps store the meta data of
-								time and place directly on the blockchain on IPFS and helping
-								viewers and newsrooms know that the image is not altered or
-								doctored.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto", marginTop: "5%" }}
-							image="https://drive.google.com/uc?export=view&id=1if2YgQXUDxuwbaPwRkQYLRY1qXZ8W8JZ"
-						/>
-					</Card>
-				</Grid>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 300 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Cryptocurrency Benefits
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								Ease of payment to journalists and their local sources, fixers, and
-								contacts in war zones and conflict zones via stable coin using a an
-								easy setup crypto wallet on Near. Cryptocurrency provides a transfer
-								of value that is much faster than banks, and much cheaper even in
-								cases of international transfers. Account transactions are publicly
-								auditable and secure, and easily accessible with a smartphone. 
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"
-						/>
-					</Card>
-				</Grid>
-			</Grid>
-			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 450 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Decentralized Content Moderation
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								Community governance is utilized for content moderation which
-								promotes credibility in a decentralized manner. Centralized
-								platforms try to moderate content with a one size fits all approach
-								banning users and deleting posts that only a small subsection of
-								users find offensive. However, Refound allows users to adjust
-								content filters so that they don&apos;t see some content rather than
-								removing it for everyone. Refound allows users to downvote content
-								they view as being misinformation making it less likely to be shown
-								to others. There is also an option to flag content which is then
-								reviewed by community moderators to make a mulit-signatory decision
-								as to its viability on the platform.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1AIa2MzZwM9aVZxAKL_C1srYwK4jR2VXv"
-						/>
-					</Card>
-				</Grid>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 450 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div" className="accentColor" >
-								Support for journalists: Funding pools and bonus payments
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								Funding pools and bonus payments: Funding pools allow the community
-								to direct tokens to commission topics they want journalists to
-								photograph and write about and for journalists to raise funds for
-								initiatives they want to report on. Refound also offers the ability
-								for users to support journalists in areas affected by war and
-								conflict by sending them a bonus payment when viewing their content.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1za8Aqy87MRCFO-9C-zQ6TNm09kru4TyM"
-						/>
-					</Card>
-				</Grid>
-			
-			</Grid>
-			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-			<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Beneficiary Wallet
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								Having a beneficiary wallet where proceeds can go to a chosen
-								beneficiary or family member in case of journalist going MIA or
-								their demise.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto"}}
-							image="https://drive.google.com/uc?export=view&id=1MkX4U53XFu2fLpmKFS_452dv9kLPuLfb"
-						/>
-					</Card>
-				</Grid>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Wallet Based Subscriptions Feature
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								The Refound subscriptions feature allows viewers to subscribe to any
-								Refound journalist with their wallets and receive email
-								notifications when new content is posted. For journalists, web3
-								subscriptions establish the link to a wallet-based community that
-								can support the journalist as they create more content.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1tBO3Cr40zeSoBiP-mUcqD2HyH1wmE_l5"
-						/>
-					</Card>
-				</Grid>
-			</Grid>
-			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								An on-chain SOS alert feature
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								which allows journalists in a geographically focused conflict zone
-								to communicate with each other and send verified alerts of any
-								escalating danger or risk in the area they are in, with alerts
-								posting on a decentralized ledger(To be developed in next phase).
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1452x4aUtPiezOASIrOLfCIrxs0nwkewx"
-						/>
-					</Card>
-				</Grid>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Identity solutions
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								With blockchain technology, information about identity is linked to
-								a wallet, and journalists can choose to remain anonymous if needed.
-								Individuals can also curate their own profiles and control the level
-								of data and identity. Refound offers the ability for journalists to
-								verify their profiles with press ID card or journalism credentials
-								if they choose to as well.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }} 
-							image="https://drive.google.com/uc?export=view&id=1eyBawxYwVsArDp80Qwd0k4u5KdNqCmbk"
-						/>
-					</Card>
-				</Grid>
-			</Grid>
-			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Revenue Sharing
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								Journalists can share revenue from their photos and articles with those impacted by conflict. The smart contract would have the royalties split between the journalist and the NGO or to the person photographed.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1Cv1TN78IHtLjhr_2M33tJrJ2_EBV3HvX"
-						/>
-					</Card>
-				</Grid>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Proof of Witness
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-							 Allows a multisig wallet sign-in to allow a local NGO, a local governing body, and up to 2 eye witnesses to authenticate the veracity (verification) of the photo or article content.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }} 
-							image="https://drive.google.com/uc?export=view&id=1xT1ufbim1zYjZJcU2Yl_t72vnLhlVLKS"
-						/>
-					</Card>
-				</Grid>
+				
 			</Grid>
 
 			{/* <Grid container justifyContent="left" sm={10} style={{ margin: "0 auto" }}>
@@ -385,6 +396,8 @@ return (
 						</>
 					))}
 			</Grid> */}
+
+		
 
 			<Grid container justifyContent="center" sm={12} style={{ margin: "0 auto" }}>
 				<h1
