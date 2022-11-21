@@ -61,6 +61,17 @@ stored contract on it.
 near call <factory-account> create_factory_subaccount_and_deploy_whitelist '{ "name": "whitelist",  "foundation_account_id": "<foundation-account-id>"}' --deposit 10 --accountId <account-id> --gas 300000000000000
 ```
 
+## 7. Deploy the NFT Contract Into a Sub-Account
+
+`create_factory_subaccount_and_deploy_nft_series` will create a sub-account of the factory and deploy the
+stored contract on it.
+
+```bash
+near call <factory-account> create_factory_subaccount_and_deploy_nft_series '{ "name": "nft-series", "owner_id": "<owner-id>", "metadata": {   "spec": "nft-1.0.0", "name": "NFT Series Contract", "symbol": "GOTEAM" }}' --deposit 10 --accountId <account-id> --gas 300000000000000
+```
+
+NOTE: you can add more metadata fields if you want.
+
 <br>
 
 ---

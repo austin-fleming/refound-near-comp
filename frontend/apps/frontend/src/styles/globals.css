@@ -47,4 +47,10 @@
 		height: auto !important;
 	}
 
+	.Typewriter{
+		color:rgb(var(--c-accent-3))!important;
+		font-size: 3em;
+		font-weight: bold;
+	}
+
 }
