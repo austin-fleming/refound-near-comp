@@ -35,6 +35,8 @@ pub const NFT_STANDARD_NAME: &str = "nep171";
 // Represents the series type. All tokens will derive this data.
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct Series {
+    // Series Verified: If the series is verified by the votees
+    verified: bool,
     // Metadata including title, num copies etc.. that all tokens will derive from
     metadata: TokenMetadata,
     // Royalty used for all tokens in the collection
@@ -128,7 +130,7 @@ impl Contract {
         let mut approved_creators =
             LookupSet::new(StorageKey::ApprovedCreators.try_to_vec().unwrap());
         approved_creators.insert(&owner_id);
-        
+
         // Create a variable of type Self with all the fields initialized.
         let this = Self {
             approved_minters,

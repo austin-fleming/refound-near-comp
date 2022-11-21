@@ -4,6 +4,8 @@ use crate::*;
 
 #[near_bindgen]
 impl Contract {
+    // TODO: ADD CROSS-CONTRACT CALLS HERE
+
     /// Create a new series. The caller must be an approved creator. All tokens in the series will inherit the same metadata
     /// If copies are set in the metadata, it will enforce that only that number of NFTs can be minted. If not, unlimited NFTs can be minted.
     /// If a title is set in the metadata, enumeration methods will return the `${title} - ${edition}` else, `${series_id} - ${edition}`
@@ -15,7 +17,7 @@ impl Contract {
         id: u64,
         metadata: TokenMetadata,
         royalty: Option<HashMap<AccountId, u32>>,
-        price: Option<U128>
+        price: Option<U128>,
     ) {
         // Measure the initial storage being used on the contract
         let initial_storage_usage = env::storage_usage();
@@ -37,13 +39,11 @@ impl Contract {
                         royalty,
                         tokens: UnorderedSet::new(StorageKey::SeriesByIdInner {
                             // We get a new unique prefix for the collection
-                            account_id_hash: hash_account_id(&format!(
-                                "{}{}",
-                                id, caller
-                            )),
+                            account_id_hash: hash_account_id(&format!("{}{}", id, caller)),
                         }),
                         owner_id: caller,
                         price: price.map(|p| p.into()),
+                        verified: false,
                     }
                 )
                 .is_none(),
@@ -57,6 +57,8 @@ impl Contract {
         refund_deposit(required_storage_in_bytes);
     }
 
+    // TODO: CREATE CROSS CONTRACT CALL
+
     /// Mint a new NFT that is part of a series. The caller must be an approved minter.
     /// The series ID must exist and if the metadata specifies a copy limit, you cannot exceed it.
     #[payable]
@@ -66,12 +68,15 @@ impl Contract {
 
         // Get the series and how many tokens currently exist (edition number = cur_len + 1)
         let mut series = self.series_by_id.get(&id.0).expect("Not a series");
-        
+
         // Check if the series has a price per token. If it does, ensure the caller has attached at least that amount
-        let mut price_per_token = 0; 
+        let mut price_per_token = 0;
         if let Some(price) = series.price {
             price_per_token = price;
-            require!(env::attached_deposit() > price_per_token, "Need to attach at least enough to cover price");
+            require!(
+                env::attached_deposit() > price_per_token,
+                "Need to attach at least enough to cover price"
+            );
         // If the series doesn't have a price, ensure the caller is an approved minter.
         } else {
             // Ensure the caller is an approved minter
@@ -146,5 +151,20 @@ impl Contract {
         } else {
             refund_deposit(required_storage_in_bytes);
         }
+    }
+
+    /// Change Series Verification Status
+    pub fn change_series_verification_status(&mut self, id: u64, verified: bool) {
+        // Ensure the caller is an approved creator
+        // let caller = env::predecessor_account_id();
+        // require!(
+        //     self.approved_creators.contains(&caller) == true,
+        //     "only approved creators can add a type"
+        // );
+
+        // Get the series and how many tokens currently exist (edition number = cur_len + 1)
+        let mut series = self.series_by_id.get(&id).expect("Not a series");
+        series.verified = verified;
+        self.series_by_id.insert(&id, &series);
     }
 }
