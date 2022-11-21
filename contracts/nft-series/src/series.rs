@@ -44,6 +44,10 @@ impl Contract {
                         owner_id: caller,
                         price: price.map(|p| p.into()),
                         verified: false,
+                        vote: VotingSeries {
+                            votes: HashMap::new(),
+                            result: None,
+                        }
                     }
                 )
                 .is_none(),
@@ -166,5 +170,78 @@ impl Contract {
         let mut series = self.series_by_id.get(&id).expect("Not a series");
         series.verified = verified;
         self.series_by_id.insert(&id, &series);
+    }
+
+    //////////////////////////////////// VOTING SERIES ////////////////////////////////////
+
+    /// Check whether the voting has ended. If total voted it larger than 2 return result
+    fn check_result(&mut self, id: U64) {
+        // Get the series and how many tokens currently exist (edition number = cur_len + 1)
+        let mut series = self.series_by_id.get(&id.0).expect("Not a series");
+
+        assert!(
+            series.vote.result.is_none(),
+            "check result is called after result is already set"
+        );
+        if self.get_total_voted(id) > near_sdk::json_types::U128(2) {
+            series.vote.result = Some(U64::from(env::block_timestamp()));
+        }
+    }
+
+    /// Method for validators to vote or withdraw the vote.
+    /// Votes for if `is_vote` is true, or withdraws the vote if `is_vote` is false.
+    pub fn vote(&mut self, id: U64, is_vote: bool) {
+        // Get the series and how many tokens currently exist (edition number = cur_len + 1)
+        let mut series = self.series_by_id.get(&id.0).expect("Not a series");
+
+        if series.vote.result.is_some() {
+            return;
+        }
+        let account_id = env::predecessor_account_id();
+
+        series
+            .vote
+            .votes
+            .insert(account_id, near_sdk::json_types::U128(1));
+        self.check_result(id);
+    }
+
+    /// Get the timestamp of when the voting finishes. `None` means the voting hasn't ended yet.
+    pub fn get_result(&self, id: U64) -> Option<WrappedTimestamp> {
+        // Get the series and how many tokens currently exist (edition number = cur_len + 1)
+        let mut series = self.series_by_id.get(&id.0).expect("Not a series");
+
+        series.vote.result.clone()
+    }
+
+    /// Returns total voted
+    /// Note: as a view method, it doesn't recompute the active stake. May need to call `ping` to
+    /// update the active stake.
+    pub fn get_total_voted(&self, id: U64) -> U128 {
+        // Get the series and how many tokens currently exist (edition number = cur_len + 1)
+        let mut series = self.series_by_id.get(&id.0).expect("Not a series");
+
+        series
+            .vote
+            .votes
+            .iter()
+            .fold(near_sdk::json_types::U128(0), |acc, (_, vote)| {
+                near_sdk::json_types::U128(acc.0 + vote.0)
+            })
+    }
+
+    /// Returns all active votes.
+    /// Note: as a view method, it doesn't recompute the active stake. May need to call `ping` to
+    /// update the active stake.
+    pub fn get_votes(&self, id: U64) -> HashMap<AccountId, U128> {
+        // Get the series and how many tokens currently exist (edition number = cur_len + 1)
+        let mut series = self.series_by_id.get(&id.0).expect("Not a series");
+
+        series
+            .vote
+            .votes
+            .iter()
+            .map(|(account_id, stake)| (account_id.clone(), (*stake).into()))
+            .collect()
     }
 }

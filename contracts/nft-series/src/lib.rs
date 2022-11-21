@@ -1,12 +1,13 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::{LazyOption, LookupMap, LookupSet, UnorderedMap, UnorderedSet};
-use near_sdk::json_types::{Base64VecU8, U128};
+use near_sdk::json_types::{Base64VecU8, U128, U64};
 use near_sdk::serde::{Deserialize, Serialize};
 use near_sdk::{
     env, near_bindgen, require, AccountId, Balance, BorshStorageKey, CryptoHash, PanicOnDefault,
     Promise, PromiseOrValue,
 };
 use std::collections::HashMap;
+type WrappedTimestamp = U64;
 
 pub use crate::approval::*;
 pub use crate::events::*;
@@ -48,6 +49,18 @@ pub struct Series {
     price: Option<Balance>,
     // Owner of the collection
     owner_id: AccountId,
+
+    // Voting
+    vote: VotingSeries,
+}
+
+/// Struct to return in views to query for specific data related to a series
+#[derive(BorshDeserialize, BorshSerialize)]
+pub struct VotingSeries {
+    /// How much each accountID votes
+    votes: HashMap<AccountId, U128>,
+    /// When the voting ended. `None` means the poll is still open.
+    result: Option<WrappedTimestamp>,
 }
 
 pub type SeriesId = u64;
