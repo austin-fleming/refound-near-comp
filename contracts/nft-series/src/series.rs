@@ -194,7 +194,7 @@ impl Contract {
         // Get the series and how many tokens currently exist (edition number = cur_len + 1)
         let mut series = self.series_by_id.get(&id.0).expect("Not a series");
 
-        require!(series.vote.result.is_some(), "Vote has ended");
+        require!(series.vote.result.is_none(), "Vote has ended");
 
         let account_id = env::predecessor_account_id();
 
