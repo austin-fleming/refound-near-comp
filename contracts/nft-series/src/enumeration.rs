@@ -1,6 +1,5 @@
-use crate::*;
 use crate::nft_core::NonFungibleTokenCore;
-
+use crate::*;
 
 /// Struct to return in views to query for specific data related to a series
 #[derive(BorshDeserialize, BorshSerialize, Serialize)]
@@ -13,6 +12,10 @@ pub struct JsonSeries {
     royalty: Option<HashMap<AccountId, u32>>,
     // Owner of the collection
     owner_id: AccountId,
+    // Series Verified: If the series is verified by the votees
+    verified: bool,
+    // Voting
+    vote: VotingSeries,
 }
 
 #[near_bindgen]
@@ -23,6 +26,7 @@ impl Contract {
         U128(self.tokens_by_id.len() as u128)
     }
 
+    // TODO: Add CROSS-CONTRACT CALLS
     //Query for nft tokens on the contract regardless of the owner using pagination
     pub fn nft_tokens(&self, from_index: Option<U128>, limit: Option<u64>) -> Vec<JsonToken> {
         //where to start pagination - if we have a from_index, we'll use that - otherwise start from 0 index
@@ -54,6 +58,8 @@ impl Contract {
             U128(0)
         }
     }
+
+    // TODO: Add CROSS-CONTRACT CALLS
 
     //Query for all the tokens for an owner
     pub fn nft_tokens_for_owner(
@@ -93,6 +99,8 @@ impl Contract {
         self.series_by_id.len()
     }
 
+    // TODO: Add CROSS-CONTRACT CALLS
+
     // Paginate through all the series on the contract and return the a vector of JsonSeries
     pub fn get_series(&self, from_index: Option<U128>, limit: Option<u64>) -> Vec<JsonSeries> {
         //where to start pagination - if we have a from_index, we'll use that - otherwise start from 0 index
@@ -111,6 +119,8 @@ impl Contract {
             .collect()
     }
 
+    // TODO: Add CROSS-CONTRACT CALLS
+
     // get info for a specific series
     pub fn get_series_details(&self, id: u64) -> Option<JsonSeries> {
         //get the series from the map
@@ -122,6 +132,8 @@ impl Contract {
                 metadata: series.metadata,
                 royalty: series.royalty,
                 owner_id: series.owner_id,
+                verified: series.verified,
+                vote: series.vote,
             })
         } else {
             //if there isn't a series, we'll return None
@@ -142,7 +154,9 @@ impl Contract {
         }
     }
 
-    /// Paginate through NFTs within a given series 
+    // TODO: Add CROSS-CONTRACT CALLS
+
+    /// Paginate through NFTs within a given series
     pub fn nft_tokens_for_series(
         &self,
         id: u64,

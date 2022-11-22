@@ -19,6 +19,9 @@ impl Contract {
         Self { nft_series_account }
     }
 
+    ///////////////////////////////// ENUMERATIONS ////////////////////////////////////
+    //////////////////////////////////  nft_total_supply //////////////////////////////////
+
     // Public - query external greeting
     pub fn query_nft_supply(&self) -> Promise {
         // Create a promise to call HelloNEAR.get_greeting()
@@ -50,34 +53,40 @@ impl Contract {
         nft_supply
     }
 
-    // // Public - change external greeting
-    // pub fn change_greeting(&mut self, new_greeting: String) -> Promise {
-    //     // Create a promise to call HelloNEAR.set_greeting(message:string)
-    //     hello_near::ext(self.hello_account.clone())
-    //         .with_static_gas(Gas(5 * TGAS))
-    //         .set_greeting(new_greeting)
-    //         .then(
-    //             // Create a callback change_greeting_callback
-    //             Self::ext(env::current_account_id())
-    //                 .with_static_gas(Gas(5 * TGAS))
-    //                 .change_greeting_callback(),
-    //         )
-    // }
+    //////////////////////////// SERIES ////////////////////////////////////////
+    ////////////////////////  nft_mint ///////////////////////////////////////
 
-    // #[private]
-    // pub fn change_greeting_callback(
-    //     &mut self,
-    //     #[callback_result] call_result: Result<(), PromiseError>,
-    // ) -> bool {
-    //     // Return whether or not the promise succeeded using the method outlined in external.rs
-    //     if call_result.is_err() {
-    //         env::log_str("set_greeting failed...");
-    //         return false;
-    //     } else {
-    //         env::log_str("set_greeting was successful!");
-    //         return true;
-    //     }
-    // }
+    // Public - change external greeting
+    pub fn nft_mint(&mut self, id: U64, receiver_id: AccountId) -> Promise {
+        // Create a promise to call HelloNEAR.set_greeting(message:string)
+        nft_series::ext(self.nft_series_account.clone())
+            .with_static_gas(Gas(5 * TGAS))
+            .nft_mint(id, receiver_id)
+            .then(
+                // Create a callback change_greeting_callback
+                Self::ext(env::current_account_id())
+                    .with_static_gas(Gas(5 * TGAS))
+                    .change_greeting_callback(),
+            )
+    }
+
+    #[private]
+    pub fn nft_mint_callback(
+        &mut self,
+        #[callback_result] call_result: Result<(), PromiseError>,
+    ) -> bool {
+        // Return whether or not the promise succeeded using the method outlined in external.rs
+        if call_result.is_err() {
+            env::log_str("nft_mint failed...");
+            return false;
+        } else {
+            env::log_str("nft_mint was successful!");
+            return true;
+        }
+    }
+
+    //////////////////////////// NFT CORE //////////////////////////////////////////
+    ///////////////////////////// nft_token ///////////////////////////////////////
 }
 
 // #[cfg(test)]

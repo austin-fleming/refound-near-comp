@@ -1,12 +1,13 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::{LazyOption, LookupMap, LookupSet, UnorderedMap, UnorderedSet};
-use near_sdk::json_types::{Base64VecU8, U128};
+use near_sdk::json_types::{Base64VecU8, U128, U64};
 use near_sdk::serde::{Deserialize, Serialize};
 use near_sdk::{
     env, near_bindgen, require, AccountId, Balance, BorshStorageKey, CryptoHash, PanicOnDefault,
     Promise, PromiseOrValue,
 };
 use std::collections::HashMap;
+type WrappedTimestamp = U64;
 
 pub use crate::approval::*;
 pub use crate::events::*;
@@ -35,6 +36,8 @@ pub const NFT_STANDARD_NAME: &str = "nep171";
 // Represents the series type. All tokens will derive this data.
 #[derive(BorshDeserialize, BorshSerialize)]
 pub struct Series {
+    // Series Verified: If the series is verified by the votees
+    verified: bool,
     // Metadata including title, num copies etc.. that all tokens will derive from
     metadata: TokenMetadata,
     // Royalty used for all tokens in the collection
@@ -46,6 +49,19 @@ pub struct Series {
     price: Option<Balance>,
     // Owner of the collection
     owner_id: AccountId,
+
+    // Voting
+    vote: VotingSeries,
+}
+
+/// Struct to return in views to query for specific data related to a series
+#[derive(BorshDeserialize, BorshSerialize, Serialize)]
+#[serde(crate = "near_sdk::serde")]
+pub struct VotingSeries {
+    /// How much each accountID votes
+    votes: HashMap<AccountId, u32>,
+    /// When the voting ended. `None` means the poll is still open.
+    result: Option<WrappedTimestamp>,
 }
 
 pub type SeriesId = u64;
@@ -128,7 +144,7 @@ impl Contract {
         let mut approved_creators =
             LookupSet::new(StorageKey::ApprovedCreators.try_to_vec().unwrap());
         approved_creators.insert(&owner_id);
-        
+
         // Create a variable of type Self with all the fields initialized.
         let this = Self {
             approved_minters,
