@@ -153,6 +153,7 @@ impl NonFungibleTokenCore for Contract {
             .into()
     }
 
+    // TODO: CROSS CONTRACT CALL
     //get the information for a specific token ID
     fn nft_token(&self, token_id: TokenId) -> Option<JsonToken> {
         //if there is some token ID in the tokens_by_id collection
