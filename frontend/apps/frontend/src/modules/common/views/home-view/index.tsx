@@ -38,9 +38,6 @@ return (
 			<div className="relative w-full h-full max-w-screen-2xl p-contentPadding">
 				<div className="relative z-[10] text-stone-800 flex flex-col h-full justify-between pb-[10vh]">
 					<h1 className="text-[10vw] max-w-[80%] leading-[10vw] font-bold text-stone-800">
-						{/* Toward A Freer
-							<br />
-							Journalism */}
 						<span className="text-[8vw] font-normal italic">the</span> <span className="accentColor">Platform</span>
 						<br />
 						<span className="text-[8vw] font-normal italic">for verified</span>  <span className="accentColor">Journalism</span>
@@ -131,7 +128,7 @@ return (
 							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
 							NGOs / Government Bodies / Eye Witnesses
 							</Typography>
-							<Typography variant="body2" color="text.secondary">›</Typography>
+							<Typography variant="body2" color="text.secondary">Eye Witnesses, NGOs, and Government Bodies can verify content, helping build trust between journalists and the public.</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
@@ -227,9 +224,7 @@ return (
 						/>
 					</Card>
 				</Grid>
-			</Grid>
-
-			<Grid item sm={12} md={3} style={{ padding: "3%" }}>
+				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
@@ -244,6 +239,9 @@ return (
 						/>
 					</Card>
 				</Grid>
+			</Grid>
+
+	
 
 			<h1 style={{ fontSize: "2.5em", textAlign:"center" }} className="accentColor font-bold">
 					Features
@@ -308,16 +306,16 @@ return (
 					<Card sx={{ maxWidth: 600, height: 400 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Publicly Visible Chain of Approvals
+							Easy one click on-boarding on NEAR using Keypom 
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
-								On chain data is public and transparent, displaying the verifying parties that were involved in verification.
+							Only NEAR allows the creation of programmable keys, which they call “keypoms.” These keys allow users to start using our dApp right away without needing to create an account.
 							</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
 							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1lyMWSBpnWRq90lHuH-XK_V440TN1QIMv"
+							image="https://drive.google.com/uc?export=view&id=1rvQ7EwQOgB_g0M_6NcS7frLD6iTq5Gv0"
 						/>
 					</Card>
 				</Grid>
@@ -388,7 +386,23 @@ return (
 						/>
 					</Card>
 				</Grid>
-				
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Publicly Visible Chain of Approvals
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								On chain data is public and transparent, displaying the verifying parties that were involved in verification.
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1lyMWSBpnWRq90lHuH-XK_V440TN1QIMv"
+						/>
+					</Card>
+				</Grid>
 			</Grid>
 
 			{/* <Grid container justifyContent="left" sm={10} style={{ margin: "0 auto" }}>
