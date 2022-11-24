@@ -8,10 +8,10 @@ const NUM_KEYS = 2;
 const NFT_CONTRACT_ID = "nft.slyracoon-nonledger.testnet";
 
 const NFT_METADATA = {
-  title: "Refound NGO",
-  description: "Refound NGO NFT",
+  title: "Refound Journalist",
+  description: "Refound Journalist NFT",
   media:
-    "https://bafybeiecmoapyrz4k3ftfauesdud3lwtrbvjdrrsed2tsbmo6u6jqadume.ipfs.w3s.link/NGOVerifierNFT.png ",
+    "https://bafybeidzlcxm7ko6q66tchjcfsuxvaa5bte2zkhiamsajaxuy7kgiojhcu.ipfs.w3s.link/Web3JournalismPioneerNFT.png",
 };
 
 const NFT_DATA = {
@@ -23,7 +23,7 @@ const NFT_DATA = {
 
 const DROP_CONFIG = {
   // How many claims can each key have.
-  uses_per_key: 100,
+  uses_per_key: 1,
 
   // Should the drop be automatically deleted when all the keys are used? This is defaulted to false and
   // Must be overwritten

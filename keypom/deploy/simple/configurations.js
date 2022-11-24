@@ -8,7 +8,7 @@ const NUM_KEYS = 2;
 
 const DROP_CONFIG = {
   // How many claims can each key have.
-  uses_per_key: 100,
+  uses_per_key: 1,
 
   // Should the drop be automatically deleted when all the keys are used? This is defaulted to false and
   // Must be overwritten
