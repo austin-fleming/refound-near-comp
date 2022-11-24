@@ -110,7 +110,7 @@ return (
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h6" component="div" className="accentColor">
+							<Typography gutterBottom variant="h7" component="div" className="accentColor">
 								Citizen and Freelance Journalists
 							</Typography>
 							<Typography variant="body2" color="text.secondary">Our publishing platform allows journalists and photographers to share first person, creative content from the frontlines swiftly, raise awareness, and sell directly to businesses.</Typography>
@@ -125,7 +125,7 @@ return (
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							<Typography gutterBottom variant="h7" component="div"  className="accentColor">
 							NGOs / Government Bodies / Eye Witnesses
 							</Typography>
 							<Typography variant="body2" color="text.secondary">Eye Witnesses, NGOs, and Government Bodies can verify content, helping build trust between journalists and the public.</Typography>
@@ -140,7 +140,7 @@ return (
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							<Typography gutterBottom variant="h7" component="div"  className="accentColor">
 							The Media/Publications
 							</Typography>
 							<Typography variant="body2" color="text.secondary">A platform to curate and purchase licenses for direct, and verified frontline content. </Typography>
@@ -156,7 +156,7 @@ return (
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							<Typography gutterBottom variant="h7" component="div"  className="accentColor">
 							News Consumers
 							</Typography>
 							<Typography variant="body2" color="text.secondary">Consumers of our platform can curate their News feed and directly support Journalists.</Typography>
@@ -176,7 +176,7 @@ return (
 					Use Cases
 				</h1>
 				<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
+				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h6" component="div" className="accentColor">
@@ -193,7 +193,7 @@ return (
 						/>
 					</Card>
 				</Grid>
-				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
+				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
@@ -209,7 +209,7 @@ return (
 					</Card>
 				</Grid>
 				
-				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
+				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
@@ -224,21 +224,6 @@ return (
 						/>
 					</Card>
 				</Grid>
-				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
-							Verified Documentation for International Donations
-							</Typography>
-							<Typography variant="body2" color="text.secondary">Gathering verified signatures and documentation for large donors for increased international funding to local NGOs.</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }} 
-							image="https://drive.google.com/uc?export=view&id=1x8MHoz7C0hGxrBEnsQLWWbyT9mm27BOE"
-						/>
-					</Card>
-				</Grid>
 			</Grid>
 
 	
@@ -250,7 +235,7 @@ return (
 			
 				<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
+					<Card sx={{ maxWidth: 600, height: 400 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
 								Simplified Publishing
@@ -267,10 +252,10 @@ return (
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 350 }}>
+					<Card sx={{ maxWidth: 600, height: 400 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Third Party Verification i.e Proof of Witness
+								Proof of Witness
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
 								When an NFT is created, it has to pass through our smart contract and it requires Third Party Verification in order for it to be validated as true and confirmed for minting. Allows a multisig wallet sign-in to allow a local NGO, a local governing body, and up to 2 eye witnesses to authenticate the veracity (verification) of the photo or article content.

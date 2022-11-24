@@ -235,9 +235,7 @@ export const LearnMoreView: NextPage = () => {
 						content aggregating sites in Web 2, which keep 75% to 85% of revenue
 						proceeds for themselves and only share 15% to 25% with the creators. Refound
 						will help regenerate your financial standing as a creator of content by
-						giving you greater monetization proceeds of your content. You will be able
-						to use CUSD and CEuro for earnings, which are stable coins tied to the US
-						dollar and Euro, respectively.
+						giving you greater monetization proceeds of your content. 
 					</p>
 				</Grid>
 			</Grid>
