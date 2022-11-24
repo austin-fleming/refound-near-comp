@@ -270,25 +270,6 @@ return (
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Automated Licensing
-							</Typography>
-							<Typography variant="body2" color="text.secondary">
-								Licenses are stored on chain and our smart contracts allow NFT minters to purchase multiple licenses for different uses.
-							</Typography>
-						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1bEspbn-09HkoZX8TknAFgY5o5eXgXhIl"
-						/>
-					</Card>
-				</Grid>
-			</Grid>
-			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 400 }}>
-						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
 								Third Party Verification i.e Proof of Witness
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
@@ -302,8 +283,28 @@ return (
 						/>
 					</Card>
 				</Grid>
+			</Grid>
+			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+			<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Revenue Sharing
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Journalists can share revenue from their photos and articles with those impacted by conflict. The smart contract will split the royalties between the journalist and the NGO or to the person photographed.
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1tBO3Cr40zeSoBiP-mUcqD2HyH1wmE_l5"
+						/>
+					</Card>
+				</Grid>
+				
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<Card sx={{ maxWidth: 600, height: 400 }}>
+					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
 							Easy one click on-boarding on NEAR using Keypom 
@@ -345,26 +346,22 @@ return (
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
 							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-								Cryptocurrency Benefits
+								Automated Licensing
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
-								Ease of payment to journalists and their local sources, fixers, and
-								contacts in war zones and conflict zones via stable coin using a an
-								easy setup crypto wallet on Near. Cryptocurrency provides a transfer
-								of value that is much faster than banks, and much cheaper even in
-								cases of international transfers. Account transactions are publicly
-								auditable and secure, and easily accessible with a smartphone. 
+								Licenses are stored on chain and our smart contracts allow NFT minters to purchase multiple licenses for different uses.
 							</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
 							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"
+							image="https://drive.google.com/uc?export=view&id=1bEspbn-09HkoZX8TknAFgY5o5eXgXhIl"
 						/>
 					</Card>
 				</Grid>
 			</Grid>
 			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+				
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
@@ -400,6 +397,30 @@ return (
 							component="img"
 							style={{ maxWidth: "150px", margin: "0 auto" }}
 							image="https://drive.google.com/uc?export=view&id=1lyMWSBpnWRq90lHuH-XK_V440TN1QIMv"
+						/>
+					</Card>
+				</Grid>
+			</Grid>
+			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+					<Card sx={{ maxWidth: 600, height: 300 }}>
+						<CardContent>
+							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+								Cryptocurrency Benefits
+							</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Ease of payment to journalists and their local sources, fixers, and
+								contacts in war zones and conflict zones via stable coin using a an
+								easy setup crypto wallet on Near. Cryptocurrency provides a transfer
+								of value that is much faster than banks, and much cheaper even in
+								cases of international transfers. Account transactions are publicly
+								auditable and secure, and easily accessible with a smartphone. 
+							</Typography>
+						</CardContent>
+						<CardMedia
+							component="img"
+							style={{ maxWidth: "150px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"
 						/>
 					</Card>
 				</Grid>
