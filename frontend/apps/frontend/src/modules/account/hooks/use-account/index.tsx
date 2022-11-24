@@ -1,68 +1,104 @@
-import { useAuth } from "../auth-context";
-import type { State as AuthState } from "../auth-context";
-import { initialState as initialAuthState } from "../auth-context";
-import type { ProfileAggregate } from "@api/modules/profile/domain/profile-aggregate";
+import type { Account } from "near-api-js";
 import type { ReactNode } from "react";
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { usePublicRefoundQueries } from "@modules/common/hooks/public-refound-context";
-import { useRouter } from "next/router";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { useNear } from "../use-near";
 
-type State = {
-	profile?: ProfileAggregate;
-	hasProfile: boolean;
-} & AuthState;
+type AccountRole = "user" | "verifier";
 
-const initialState = {
-	...initialAuthState,
-	profile: undefined,
-	hasProfile: false,
+type BaseState = {
+	signIn: (role: AccountRole) => Promise<void>;
+	signOut: () => Promise<void>;
+};
+
+type AccountState =
+	| {
+			isSignedIn: true;
+			account: Account;
+			balance: string;
+			id: string;
+			role: AccountRole;
+	  }
+	| {
+			isSignedIn: false;
+			account?: Account;
+			balance?: string;
+			id?: string;
+			role?: AccountRole;
+	  };
+
+type State = BaseState & AccountState;
+
+const initialState: State = {
+	isSignedIn: false,
+	account: undefined,
+	balance: undefined,
+	id: undefined,
+	role: undefined,
+	signIn: async () => {
+		console.warn("SignIn not initialized");
+	},
+	signOut: async () => {
+		console.warn("SignOut not initialized");
+	},
 };
 
 const AccountContext = createContext<State>(initialState);
 export const useAccount = () => useContext(AccountContext);
 
-export const AccountProvider = ({ children }: { children: ReactNode }) => {
-	const router = useRouter();
-	const { address, login, logout, status } = useAuth();
-	const { getProfileByAddress } = usePublicRefoundQueries();
-	const [state, setState] = useState<State>(initialState);
+export const AccountContextProvider = ({ children }: { children: ReactNode }) => {
+	const { wallet, checkIsLoggedIn, requestSignIn, requestSignOut } = useNear();
+	const [accountState, setAccountState] = useState<AccountState>({ isSignedIn: false });
 
-	/* useEffect(() => {
-        setState({...state, address});
-    }, [address, login, logout])
- */
-	const loadProfile = useCallback(async () => {
-		if (!address) return;
+	const reset = useCallback(() => {
+		setAccountState({ isSignedIn: false });
+	}, []);
 
-		(await getProfileByAddress(address)).match({
-			ok: (profile) => {
-				setState({ ...state, profile, hasProfile: true });
-			},
-			fail: (error) => {
-				setState({ ...state, hasProfile: false });
-				console.error(error);
-				router.push("/sign-up");
-			},
+	const initAccount = useCallback(async () => {
+		if (!window) {
+			console.warn("tried to init account outside of browser context");
+			return;
+		}
+
+		const savedRole = (sessionStorage.getItem("role") as AccountRole) || "user";
+
+		if (!checkIsLoggedIn() || !wallet) {
+			reset();
+			return;
+		}
+
+		const account = wallet.account();
+		const { total: totalBalance } = await account.getAccountBalance();
+		const id = account.accountId;
+
+		setAccountState({
+			isSignedIn: true,
+			balance: totalBalance,
+			id,
+			account,
+			role: savedRole,
 		});
-	}, [address]);
+	}, [wallet]);
+
+	const signIn = async (role: AccountRole) => {
+		sessionStorage.setItem("role", role);
+		await requestSignIn();
+	};
+
+	const signOut = async () => {
+		sessionStorage.removeItem("role");
+		await requestSignOut();
+		reset();
+	};
 
 	useEffect(() => {
-		if (address && (!state.hasProfile || !state.profile)) {
-			loadProfile();
-		}
-	}, [address, state.hasProfile, state.profile]);
+		initAccount();
+	}, [wallet]);
 
-	const values: State = useMemo(
-		() => ({
-			address,
-			login,
-			logout,
-			status,
-			profile: state.profile,
-			hasProfile: state.hasProfile,
-		}),
-		[address, login, logout, status, state.profile, state.hasProfile],
-	);
+	const value: State = {
+		...accountState,
+		signIn,
+		signOut,
+	};
 
-	return <AccountContext.Provider value={values}>{children}</AccountContext.Provider>;
+	return <AccountContext.Provider value={value}>{children}</AccountContext.Provider>;
 };

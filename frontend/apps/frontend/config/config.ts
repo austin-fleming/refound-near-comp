@@ -19,5 +19,9 @@ export const config = {
 		content: {
 			defaultResultCount: 10,
 		},
+		host:
+			process.env.NODE_ENV === "production"
+				? process.env.NEXT_PUBLIC_SITE_HOST_PROD
+				: process.env.NEXT_PUBLIC_SITE_HOST_DEV,
 	},
 } as const;

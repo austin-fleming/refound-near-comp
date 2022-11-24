@@ -1,165 +1,26 @@
-import { SignInButton } from "@modules/account/components/sign-in-button";
+// import { useAccount } from "@modules/account/hooks/use-auth";
+// import { useAccount } from "@modules/account/hooks/use-account";
 import { useAccount } from "@modules/account/hooks/use-account";
+import { useNear } from "@modules/account/hooks/use-near";
 import { ContentSection } from "@modules/ui/content-section";
+import { cloin } from "@utils/styling/cloin";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import type { ReactNode } from "react";
 import { useEffect } from "react";
-import * as Accordion from "@radix-ui/react-accordion";
-import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { cloin } from "@utils/styling/cloin";
-
-const AccordionItem = ({
-	value,
-	children,
-	title,
-}: {
-	value: string;
-	children: ReactNode;
-	title: string;
-}) => {
-	return (
-		<Accordion.Item
-			value={value}
-			className="bg-white rounded-lg focus-within:ring focus-within:ring-purple-500 focus-within:ring-opacity-75 focus:outline-none"
-		>
-			<Accordion.Header className="w-full">
-				<Accordion.Trigger
-					className={cloin(
-						"group",
-						"radix-state-open:rounded-t-lg radix-state-closed:rounded-lg",
-						"focus:outline-none",
-						"inline-flex w-full items-center justify-between bg-white px-4 py-2 text-left dark:bg-gray-800",
-					)}
-				>
-					<span className="text-sm font-medium text-gray-900 dark:text-gray-100">
-						{title}
-					</span>
-					<ChevronDownIcon
-						className={cloin(
-							"ml-2 h-5 w-5 shrink-0 text-gray-700 ease-in-out dark:text-gray-400",
-							"group-radix-state-open:rotate-180 group-radix-state-open:duration-300",
-						)}
-					/>
-				</Accordion.Trigger>
-			</Accordion.Header>
-			<Accordion.Content className="w-full px-4 pb-3 mt-0 prose-sm prose bg-white rounded-b-lg pt-r1">
-				<div className="text-sm text-gray-700 dark:text-gray-400">{children}</div>
-			</Accordion.Content>
-		</Accordion.Item>
-	);
-};
-
-const HelperItems = () => {
-	return (
-		<Accordion.Root type="single" defaultValue="1" className="w-full space-y-4">
-			<AccordionItem value="1" title="How this works">
-				<p className="font-bold">This site is running on Celo&apos;s Alfajores network.</p>
-				<p>
-					In web3, your identity is linked to your wallet, think of it like your email
-					address, but with the ability to hold your crypto currency and NFT assets.
-				</p>
-			</AccordionItem>
-
-			<AccordionItem value="2" title="Setting Up a Wallet">
-				<p className="font-bold">This site is running on Celo&apos;s Alfajores network.</p>
-				<p>
-					In web3, your identity is linked to your wallet, think of it like your email
-					address, but with the ability to hold your crypto currency and NFT assets.
-				</p>
-			</AccordionItem>
-
-			<AccordionItem value="3" title="Funding Your Wallet">
-				<p>
-					If you need some free test funds, you can{" "}
-					<a href="https://celo.org/developers/faucet" target="_blank" rel="noreferrer">
-						visit this link
-					</a>
-					.
-				</p>
-			</AccordionItem>
-
-			<AccordionItem value="4" title="Contact Us">
-				<p>
-					To register your interest and setup a tutorial with the Refound team, please
-					email us at hello@refound.app”
-				</p>
-			</AccordionItem>
-		</Accordion.Root>
-	);
-};
-
-const HowToDropdown = () => {
-	return (
-		<div
-			tabIndex={0}
-			className="w-full border collapse collapse-plus border-base-300 bg-base-100 rounded-box p-contentPadding"
-		>
-			<div className="font-bold collapse-title">How does this work?</div>
-			<div className="leading-tight prose-sm prose collapse-content ">
-				<p className="font-bold">This site is running on Celo&apos;s Alfajores network.</p>
-				<p>
-					In web3, your identity is linked to your wallet, think of it like your email
-					address, but with the ability to hold your crypto currency and NFT assets.
-				</p>
-				<p>
-					To signup with Refound, make sure you have a Celo/Alfajores compatible wallet
-					such as{" "}
-					<a
-						href="https://metamask.io/"
-						target="_blank"
-						className="link"
-						rel="noreferrer"
-					>
-						MetaMask
-					</a>{" "}
-					or the developer version of{" "}
-					<a
-						className="link"
-						href="https://alfajores.celowallet.app/setup"
-						target="_blank"
-						rel="noreferrer"
-					>
-						Celo wallet
-					</a>{" "}
-					installed so you can sign into this site.
-				</p>
-
-				<p>
-					If you need some free test funds, you can{" "}
-					<a href="https://celo.org/developers/faucet" target="_blank" rel="noreferrer">
-						visit this link
-					</a>
-					.
-				</p>
-
-				<p>
-					To register your interest and setup a tutorial with the Refound team, please
-					email us at hello@refound.app”
-				</p>
-			</div>
-		</div>
-	);
-};
 
 export const SignInView: NextPage = () => {
 	const router = useRouter();
-	const { address, hasProfile, login, status } = useAccount();
+	const { signIn, isSignedIn } = useAccount();
 
 	useEffect(() => {
-		if (address && !hasProfile) {
-			router.push("/sign-up");
-			return;
-		}
-
-		if (address) {
+		if (isSignedIn) {
 			router.push("/discover");
 		}
-	}, [address, hasProfile]);
+	}, [isSignedIn]);
 
 	return (
 		<ContentSection width="xs" className="flex flex-col items-center gap-12">
-			<ul className="steps">
+			{/* <ul className="steps">
 				<li className={`step step-neutral`}>
 					<span className="text-xs font-bold tracking-wide px-[1em]">
 						Connect Your Wallet
@@ -170,32 +31,52 @@ export const SignInView: NextPage = () => {
 						Create Your Profile
 					</span>
 				</li>
-			</ul>
+			</ul> */}
 
-			<h1 className="text-2xl font-bold">Welcome to Refound</h1>
-
-			<div className="w-full">
-				<SignInButton
-					size="lg"
-					className="w-full rounded-md"
-					signInLabel="Connect Your Wallet"
-				/>
-				<p className="w-full text-sm text-center pt-[1em]">
-					This site is running on Celo&apos;s Alfajores network.
+			<div className="w-full pt-16 pb-4">
+				<h1 className="text-4xl font-bold text-center">Sign In</h1>
+				<p className="w-full text-sm text-center pt-[0.5em] max-w-[25ch] mx-auto">
+					To use this demo, select the role which you want to use.
 				</p>
 			</div>
 
-			{/* <div className="leading-tight prose-sm prose bg-base-100 rounded-box">
-				<div className="p-contentPadding">
-					<p className="font-bold">
-						This site is running on Celo&apos;s Alfajores network.
+			<div className="w-full">
+				<div className="w-full pb-[2rem]">
+					<button
+						className={cloin(
+							"btn btn-lg w-full rounded-md",
+							/* status === "no_wallet" && "btn-disabled", */
+						)}
+						onClick={() => {
+							signIn("user");
+						}}
+					>
+						User Role
+					</button>
+					<p className="w-full text-sm text-center pt-[0.5em] max-w-[30ch] mx-auto">
+						Sign in from the perspective of a journalist or user who will create and
+						purchase NFTs.
 					</p>
 				</div>
 
-				<HowToDropdown />
-			</div> */}
-
-			{/* <HelperItems /> */}
+				<div className="w-full pb-[2rem]">
+					<button
+						className={cloin(
+							"btn btn-lg w-full rounded-md",
+							/* status === "no_wallet" && "btn-disabled", */
+						)}
+						onClick={() => {
+							signIn("verifier");
+						}}
+					>
+						NGO Role
+					</button>
+					<p className="w-full text-sm text-center pt-[0.5em] max-w-[30ch] mx-auto">
+						Sign in from the perspective of a Non-Government Organization (NGO) which
+						verifies the credibility of NFTs.
+					</p>
+				</div>
+			</div>
 
 			<div className="shadow-lg alert">
 				<div>
@@ -203,36 +84,30 @@ export const SignInView: NextPage = () => {
 						<h3>What&apos;s a Wallet?</h3>
 						<p>
 							In web3, your identity is linked to your wallet, think of it like your
-							email address, but with the ability to hold your crypto currency and NFT
-							assets.
+							email address, but with the ability to hold your currencies and assets.
 						</p>
 
 						<h3>Installing a Wallet</h3>
 						<p>
-							To signup with Refound, make sure you have a Celo/Alfajores compatible
-							wallet such as{" "}
+							To signup with Refound, make sure you have a{" "}
 							<a
-								href="https://metamask.io/"
+								href="https://wallet.near.org/"
 								target="_blank"
 								className="link"
 								rel="noreferrer"
 							>
-								MetaMask
+								Near Wallet
 							</a>{" "}
-							or the developer version of{" "}
-							<a
-								className="link"
-								href="https://alfajores.celowallet.app/setup"
-								target="_blank"
-								rel="noreferrer"
-							>
-								Celo wallet
-							</a>{" "}
-							installed so you can sign into this site.
+							set up so you can sign into this site. If you don&apos;t have one yet,
+							the sign up link should guide you through it.
 						</p>
 
 						<h3>Funding Your Wallet</h3>
 						<p>
+							This demo application is running on Near&apos;s testnet. Upon signing
+							in, you should have some free test funds available in your wallet.
+						</p>
+						{/* <p>
 							If you need some free test funds, you can{" "}
 							<a
 								href="https://celo.org/developers/faucet"
@@ -248,7 +123,7 @@ export const SignInView: NextPage = () => {
 						<p>
 							To register your interest and setup a tutorial with the Refound team,
 							please email us at hello@refound.app
-						</p>
+						</p> */}
 					</div>
 				</div>
 			</div>

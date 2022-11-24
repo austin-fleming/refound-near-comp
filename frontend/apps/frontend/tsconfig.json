@@ -29,14 +29,11 @@
             "@api/*": [
                 "api/*"
             ],
-            "@config": [
+            "@config/*": [
                 "config/*"
             ],
             "@modules/*": [
                 "src/modules/*"
-            ],
-            "@packages/*": [
-                "packages/*"
             ],
             "@services/*": [
                 "src/services/*"
