@@ -11,21 +11,17 @@ export const SiteHeader = () => {
 	const { isSignedIn, signOut, id, role } = useAccount();
 
 	return (
-		<header className="fixed top-0 left-0 right-0 flex flex-row items-center justify-between border-b-2 border-solid h-headerTopHeight border-primary z-[5000] bg-white">
+		<header className="fixed top-0 left-0 right-0 flex flex-row px-sitepad items-center justify-between border-b-2 border-solid h-headerTopHeight border-primary z-[5000] bg-white">
 			<NextLink href="/">
-				<div>
-					<img
-						style={{ display: "inline-block", marginBottom: "10px" }}
-						src="/favicon-32x32.png"
-						width="32"
-					></img>
+				<a className="flex flex-row justify-center">
+					<img className="block" src="/favicon-32x32.png" width="32"></img>
 					<h1
 						className="font-normal leading-none text-[2em]"
 						style={{ display: "inline-block", marginLeft: "10px" }}
 					>
 						refound
 					</h1>
-				</div>
+				</a>
 			</NextLink>
 
 			<div className="flex flex-row items-center">
@@ -43,7 +39,6 @@ export const SiteHeader = () => {
 				>
 					{status === "DISCONNECTED" ? "Sign In" : "Sign Out"}
 				</button> */}
-				<a href="/create">Create</a>
 
 				{isSignedIn ? (
 					<>
@@ -56,10 +51,6 @@ export const SiteHeader = () => {
 						>
 							Sign Out
 						</button>
-
-						<span>
-							{id} || {role}
-						</span>
 					</>
 				) : (
 					<a className="btn" href="/sign-in">
@@ -110,7 +101,7 @@ export const SiteHeader = () => {
 					{isLoggedIn ? "Near Sign Out" : "Near Sign In"}
 				</button> */}
 
-				<Sidebar />
+				{/* <Sidebar /> */}
 			</div>
 		</header>
 	);
