@@ -48,10 +48,10 @@ return (
 
 					<div className="flex flex-row gap-4">
 						<a href="/sign-in" className="btn btn-lg" style={{borderRadius:"15px"}}>
-							Sign Up
+							Sign Up  
 						</a>
 						<a href="/learn-more" className="btn btn-lg btn-outline" style={{borderRadius:"15px"}}>
-						Learn More
+							Learn More
 						</a>
 					</div>
 				</div>
