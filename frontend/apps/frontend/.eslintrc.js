@@ -13,7 +13,8 @@ module.exports = {
         "@typescript-eslint/consistent-type-imports": "error",
         "sonarjs/no-duplicate-string": "warn",
         "@typescript-eslint/no-empty-function": "warn",
-        "security/detect-non-literal-fs-filename": 0
+        "security/detect-non-literal-fs-filename": 0,
+        "@next/next/no-html-link-for-pages": "warn"
     },
     ignorePatterns: ["**/__deprecated__/**/*"]
 }
