@@ -53,9 +53,11 @@ export const SiteHeader = () => {
 						</button>
 					</>
 				) : (
-					<a className="btn" href="/sign-in">
-						Sign In
-					</a>
+					<NextLink href="/sign-in">
+						<a className="btn" href="/sign-in">
+							Sign In
+						</a>
+					</NextLink>
 				)}
 
 				{/* {account.status === "connected" && (

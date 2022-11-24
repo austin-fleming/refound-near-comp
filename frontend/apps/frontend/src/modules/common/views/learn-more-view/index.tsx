@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import * as React from "react";
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 import { Grid } from "@mui/material";
+import NextLink from "next/link";
 
 export const LearnMoreView: NextPage = () => {
 	return (
@@ -51,9 +52,15 @@ export const LearnMoreView: NextPage = () => {
 						className="flex flex-row items-center w-full gap-2 justify-left"
 						style={{ marginTop: "20px" }}
 					>
-						<a href="/sign-in" className="btn btn-lg"  style={{borderRadius:"15px"}}>
-							Sign Up
-						</a>
+						<NextLink href="/sign-in">
+							<a
+								href="/sign-in"
+								className="btn btn-lg"
+								style={{ borderRadius: "15px" }}
+							>
+								Sign Up
+							</a>
+						</NextLink>
 					</div>
 				</Grid>
 			</Grid>
