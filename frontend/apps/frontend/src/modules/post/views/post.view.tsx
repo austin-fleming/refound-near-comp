@@ -81,10 +81,16 @@ export const PostView = () => {
 
 					<p className="text-sm font-bold">
 						by{" "}
-						<span className="border-[1px] font-bold border-transparent underline border-black text-black inline-block text-sm pt-[0.25em] pb-[0.4em] leading-none mr-[0.5em]">
+						<span className="text-black inline-block text-sm pt-[0.25em] pb-[0.4em] leading-none mr-[0.5em]">
 							@{post.owner}
 						</span>
 					</p>
+
+					{post.isVerified && (
+						<span className="rounded-full badge badge-lg badge-success">
+							NGO Verified
+						</span>
+					)}
 				</header>
 
 				<figure className="w-full overflow-hidden rounded-lg">

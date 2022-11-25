@@ -265,7 +265,9 @@ export class PostContractAdapter {
 			// TODO: currently enormous query just to find next id
 			const nextId = await this.contract
 				.get_series({})
-				.then((series) => series[series.length - 1].series_id + 1);
+				.then((series) =>
+					series.length > 0 ? series[series.length - 1].series_id + 1 : 0,
+				);
 
 			// TODO: Should be calculated based on bytes to be stored.
 			const yoctoDeposit = "10000000000000000000000";
@@ -287,6 +289,7 @@ export class PostContractAdapter {
 			return result.ok(true);
 		} catch (error) {
 			console.error(error);
+
 			return result.fail(new Error("Failed to create post"));
 		}
 	}

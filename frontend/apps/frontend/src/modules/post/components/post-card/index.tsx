@@ -1,9 +1,10 @@
 import type { Post } from "@modules/post/domain/post.entity";
 import { trimText } from "@utils/trim-text";
 import NextImage from "next/image";
+import { InteractionsBadge } from "./interactions";
 
 export const PostCard = ({
-	post: { imageLink, title, description, id, owner, isVerified },
+	post: { imageLink, title, description, id, owner, isVerified, voteCount },
 }: {
 	post: Post;
 }) => {
@@ -28,6 +29,7 @@ export const PostCard = ({
 							{description && <p className="">{trimText(description, 90)}</p>}
 
 							<div className="flex flex-row justify-between w-full mt-2">
+								<InteractionsBadge voteCount={voteCount} />
 								{/* <InteractionsBadge interactionList={interactions} /> */}
 								{/* <time
                                 className="text-xs"
