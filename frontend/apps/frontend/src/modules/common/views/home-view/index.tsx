@@ -169,7 +169,7 @@ export const HomeView: NextPage = () => {
 								component="div"
 								className="accentColor"
 							>
-								NGOs / Government Bodies / Eye Witnesses
+								NGOs / Eye Witnesses
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
 								Eye Witnesses, NGOs, and Government Bodies can verify content,

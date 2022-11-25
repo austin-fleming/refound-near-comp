@@ -143,9 +143,7 @@ export const LearnMoreView: NextPage = () => {
 					<p style={{ marginBottom: "20px" }}>
 						Refound allows journalists to get better compensation for their work and
 						sell to both the news and a global audience. Journalists then have a clear
-						path to fair compensation, licensing, and revenue for their work. A
-						beneficiary wallet function allows revenues to be passed on to selected
-						benefiaries. Funding pools on Refound allow for journalists to raise funds
+						path to fair compensation, licensing, and revenue for their work. Funding pools on Refound allow for journalists to raise funds
 						to produce integral content.
 					</p>
 				</Grid>
@@ -156,21 +154,17 @@ export const LearnMoreView: NextPage = () => {
 				sm={8}
 				style={{ margin: "0 auto", marginTop: "5%" }}
 			>
-				<Grid item sm={12} md={6} style={{ padding: "3%", color: "white" }}>
+				<Grid item sm={12} md={6} style={{ padding: "3%", color: "white", marginTop:"5%" }}>
 					<h1
 						className="font-bold"
 						style={{ fontSize: "2em", textShadow: "2px 4px 3px rgba(0,0,0,0.3)" }}
 					>
-						HOW DOES IT WORK? HOW DO I SETUP A BENEFICIARY?
+						HOW DOES IT WORK? 
 					</h1>
 					<p style={{ textShadow: "2px 4px 3px rgba(0,0,0,0.3)" }}>
 						Journalists on Refound benefit from the community as well which has the
 						ability to support content creators by sending them a bonus. Refound stores
 						all data on IPFS as decentralized storage.
-					</p>
-					<p style={{ textShadow: "2px 4px 3px rgba(0,0,0,0.3)" }}>
-						A beneficiary is selected when creating your profile on Refound in the
-						sign-up section.
 					</p>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
