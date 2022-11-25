@@ -53,11 +53,7 @@ export const LearnMoreView: NextPage = () => {
 						style={{ marginTop: "20px" }}
 					>
 						<NextLink href="/sign-in">
-							<a
-								href="/sign-in"
-								className="btn btn-lg"
-								style={{ borderRadius: "15px" }}
-							>
+							<a className="btn btn-lg" style={{ borderRadius: "15px" }}>
 								Sign Up
 							</a>
 						</NextLink>

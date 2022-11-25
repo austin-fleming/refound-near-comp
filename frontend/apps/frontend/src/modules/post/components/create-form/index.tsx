@@ -282,9 +282,7 @@ export const CreateForm = () => {
 					<AlertBar kind="warning">
 						Please{" "}
 						<NextLink href="/sign-in">
-							<a className="link" href="/sign-in">
-								sign in
-							</a>
+							<a className="link">sign in</a>
 						</NextLink>{" "}
 						to create a post.
 					</AlertBar>
