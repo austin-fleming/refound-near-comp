@@ -597,7 +597,7 @@ export const HomeView: NextPage = () => {
 			>
 				<NextLink href="/sign-in">
 					<a
-						className="btn btn-lg backgroundColorAccent"
+						className="btn btn-lg animate-bounce backgroundColorAccent"
 						style={{ borderRadius: "15px" }}
 					>
 						Sign Up
