@@ -18,8 +18,6 @@ export const SignUpView = () => {
 			</ul>
 
 			<h1 className="text-2xl font-bold">Create Your Account</h1>
-
-			<SignUpForm />
 		</ContentSection>
 	);
 };
