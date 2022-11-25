@@ -44,7 +44,7 @@ export const SiteHeader = () => {
 						<a>Discover</a>
 					</NextLink>
 
-					<NextLink href="/create">
+					<NextLink href="/trial">
 						<a>Free Trial</a>
 					</NextLink>
 				</nav>

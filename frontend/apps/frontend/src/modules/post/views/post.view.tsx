@@ -13,6 +13,7 @@ import { ArrowRightIcon } from "@radix-ui/react-icons";
 import NextLink from "next/link";
 import { LicensePost } from "../components/license-post";
 import { PostInteractions } from "../components/post-interactions";
+import { KeypomModal } from "../components/keypom-modal";
 
 export const PostView = () => {
 	const router = useRouter();
@@ -102,11 +103,12 @@ export const PostView = () => {
 				</figure>
 
 				<div className="flex flex-row flex-wrap justify-between w-full gap-8">
-					<PostInteractions post={post} />
+					<div className="flex flex-col gap-4">
+						<PostInteractions post={post} />
+						<KeypomModal />
+					</div>
 
 					<LicensePost post={post} />
-					{/* <PostInteractions post={post} />
-					<LicensePost post={post} /> */}
 				</div>
 
 				{/* <div className="flex flex-row flex-wrap gap-8">

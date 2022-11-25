@@ -84,7 +84,11 @@ interface SeriesCommands {
 	change_series_verification: (payload: { id: number; verified: boolean }) => Promise<void>;
 	vote: (payload: { id: number }) => Promise<void>;
 	set_vote_result: (payload: { id: number }) => Promise<void>;
-	nft_mint: (payload: { id: string; receiver_id: string }) => Promise<void>;
+	nft_mint: (
+		payload: { id: string; receiver_id: string },
+		gas?: string,
+		deposit?: string,
+	) => Promise<void>;
 }
 
 type SeriesContract = NearContract & SeriesCommands & SeriesQueries;
@@ -309,10 +313,16 @@ export class PostContractAdapter {
 	async purchaseLicense(payload: { id: number; licenseType: keyof typeof LicenseType }) {
 		// TODO: implement
 		try {
-			await this.contract.nft_mint({
-				id: `${payload.id}`,
-				receiver_id: this.contract.account.accountId,
-			});
+			const yoctoDeposit = "10000000000000000000000";
+
+			await this.contract.nft_mint(
+				{
+					id: `${payload.id}`,
+					receiver_id: this.contract.account.accountId,
+				},
+				undefined,
+				yoctoDeposit,
+			);
 
 			return result.ok(true);
 		} catch (error) {
