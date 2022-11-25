@@ -7,4 +7,13 @@ export type Post = {
 	description: string;
 	imageLink: string;
 	isVerified: boolean;
+	userHasVoted: boolean;
+	voteCount: number;
 };
+
+export enum LicenseType {
+	Outright = "Outright",
+	WebLicense = "WebLicense",
+	PrintLicense = "PrintLicense",
+	SingleUse = "SingleUse",
+}

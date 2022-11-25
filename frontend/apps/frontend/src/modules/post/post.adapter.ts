@@ -2,7 +2,7 @@ import type { Result } from "@utils/monads";
 import { result } from "@utils/monads";
 import type { WalletConnection } from "near-api-js";
 import { Contract as NearContract } from "near-api-js";
-import type { Post } from "./domain/post.entity";
+import type { LicenseType, Post } from "./domain/post.entity";
 
 type SeriesId = number;
 type Base64VecU8 = string;
@@ -46,15 +46,30 @@ type JsonSeries = {
 	vote: VotingSeries;
 };
 
-const queries = ["get_series", "get_votes", "get_total_votes", "get_vote_result"];
+const queries = [
+	"get_series_details",
+	"get_series",
+	"get_votes",
+	"get_total_votes",
+	"get_vote_result",
+];
+
 interface SeriesQueries {
+	get_series_details: (query: { id: number }) => Promise<JsonSeries>;
 	get_series: (query: { from_index?: number; limit?: number }) => Promise<JsonSeries[]>;
 	get_votes: (query: { id: string }) => Promise<Record<AccountId, number>>;
 	get_total_votes: (query: { id: number }) => Promise<number>;
 	get_vote_result: (query: { id: number }) => Promise<Timestamp | null | undefined>;
 }
 
-const commands = ["create_series", "change_series_verification", "vote", "set_vote_result"];
+const commands = [
+	"create_series",
+	"change_series_verification",
+	"vote",
+	"set_vote_result",
+	"nft_mint",
+];
+
 interface SeriesCommands {
 	create_series: (
 		payload: {
@@ -69,6 +84,7 @@ interface SeriesCommands {
 	change_series_verification: (payload: { id: number; verified: boolean }) => Promise<void>;
 	vote: (payload: { id: number }) => Promise<void>;
 	set_vote_result: (payload: { id: number }) => Promise<void>;
+	nft_mint: (payload: { id: string; receiver_id: string }) => Promise<void>;
 }
 
 type SeriesContract = NearContract & SeriesCommands & SeriesQueries;
@@ -115,61 +131,83 @@ export class PostContractAdapter {
 
 	//----------------------------------------
 	//----------------------------------------
+	// MAPPERS
+	//----------------------------------------
+	//----------------------------------------
+
+	private async postDtoToEntity(series: JsonSeries): Promise<Post> {
+		console.log({ postDtoToEntity1: this.contract });
+		let userHasVoted = false;
+
+		console.log({ postDtoToEntity2: this.contract });
+
+		const voteCount = await this.contract
+			.get_votes({ id: `${series.series_id}` })
+			.then((votesByAccount) =>
+				Object.keys(votesByAccount).reduce((previous, current) => {
+					// TODO: very heavy way to handle checking if user has already voted.
+					if (current === this.contract.account.accountId) {
+						userHasVoted = true;
+					}
+
+					return votesByAccount[current] > 0 ? previous + 1 : previous;
+				}, 0),
+			);
+
+		const post: Post = {
+			id: series.series_id,
+			owner: series.owner_id,
+			title: series.metadata.title || "Untitled",
+			description: series.metadata.description || "",
+			imageLink: series.metadata.media || "/placeholder.jpeg",
+			isVerified: series.verified,
+			voteCount,
+			userHasVoted,
+		};
+
+		return post;
+	}
+
+	//----------------------------------------
+	//----------------------------------------
 	// QUERIES
 	//----------------------------------------
 	//----------------------------------------
 
+	async getPost(query: { id: number }): Promise<Result<Post>> {
+		try {
+			const seriesDetails = await this.contract.get_series_details({ id: query.id });
+
+			const post = await this.postDtoToEntity(seriesDetails);
+
+			return result.ok(post);
+		} catch (error) {
+			console.error(error);
+
+			return result.fail(new Error("Could not get post."));
+		}
+	}
+
 	async getPosts(query: { from_index?: number; limit?: number }): Promise<Result<Post[]>> {
 		try {
-			const posts: Post[] = (await this.contract.get_series(query)).map((series) => ({
-				id: series.series_id,
-				owner: series.owner_id,
-				title: series.metadata.title || "Untitled",
-				description: series.metadata.description || "",
-				imageLink: series.metadata.media || "/placeholder.jpeg",
-				isVerified: series.verified,
-			}));
-			/* console.log({ series }); */
-			/* const posts: Post[] = await Promise.all(
-				series.map(async (series) => {
-					const verifications = (
-						await this.getPostVerifiers({ id: series.series_id })
-					).unwrapOrElse((error) => {
-						throw error;
-					});
+			const series = await this.contract.get_series(query);
 
-					console.log({ verifications });
-
-					const verifiers: Post["verifiers"] = Object.keys(verifications).reduce(
-						(previous: Post["verifiers"], currentKey) =>
-							verifications[currentKey] > 0 ? [...previous, currentKey] : previous,
-						[],
-					);
-
-					return {
-						id: series.series_id,
-						owner: series.owner_id,
-						title: series.metadata.title || "Untitled",
-						description: series.metadata.description || "",
-						imageLink: series.metadata.media || "/placeholder.jpeg",
-						isVerified: verifiers.length > 0,
-						verifiers,
-					};
-				}),
-			); */
+			const posts: Post[] = await Promise.all(
+				series.map(async (item) => this.postDtoToEntity(item)),
+			);
 
 			return result.ok(posts);
 		} catch (error) {
 			console.error(error);
 
-			return result.fail(new Error("Could not get series."));
+			return result.fail(new Error("Could not get posts."));
 		}
 	}
 
 	/**
 	 * Returns table of who has verified the post to how many times they have verified
 	 */
-	async getPostVerifiers(query: { id: number }): Promise<Result<Record<AccountId, number>>> {
+	/* async getPostVerifiers(query: { id: number }): Promise<Result<Record<AccountId, number>>> {
 		try {
 			const votes = await this.contract.get_votes({ id: `${query.id}` });
 
@@ -179,12 +217,12 @@ export class PostContractAdapter {
 
 			return result.fail(new Error("Could not get votes"));
 		}
-	}
+	} */
 
 	/**
 	 * Returns total number of verifications a post has received
 	 */
-	async getPostVerifications(query: { id: number }): Promise<Result<number>> {
+	/* 	async getPostVerifications(query: { id: number }): Promise<Result<number>> {
 		try {
 			const totalVotes = await this.contract.get_total_votes(query);
 
@@ -194,9 +232,9 @@ export class PostContractAdapter {
 
 			return result.fail(new Error("Could not get total votes"));
 		}
-	}
+	} */
 
-	async checkPostIsVerified(query: { id: number }): Promise<Result<boolean>> {
+	/* async checkPostIsVerified(query: { id: number }): Promise<Result<boolean>> {
 		try {
 			const totalVotes = await this.contract.get_total_votes(query);
 
@@ -206,7 +244,7 @@ export class PostContractAdapter {
 
 			return result.fail(new Error("Could not check if post is verified"));
 		}
-	}
+	} */
 
 	//----------------------------------------
 	//----------------------------------------
@@ -253,7 +291,7 @@ export class PostContractAdapter {
 		}
 	}
 
-	async verifyPost(payload: { id: number; verified: boolean }): Promise<Result<true>> {
+	async verifyPost(payload: { id: number }): Promise<Result<true>> {
 		try {
 			await this.contract.change_series_verification({ ...payload, verified: true });
 
@@ -265,9 +303,34 @@ export class PostContractAdapter {
 		}
 	}
 
-	async purchaseLicense() {
+	async purchaseLicense(payload: { id: number; licenseType: keyof typeof LicenseType }) {
 		// TODO: implement
+		try {
+			await this.contract.nft_mint({
+				id: `${payload.id}`,
+				receiver_id: this.contract.account.accountId,
+			});
+
+			return result.ok(true);
+		} catch (error) {
+			console.error(error);
+
+			return result.fail(new Error("Failed to purchase license."));
+		}
 	}
+
+	async vote(payload: { id: number }) {
+		try {
+			await this.contract.vote({ id: `${payload.id}` });
+
+			return result.ok(true);
+		} catch (error) {
+			console.error(error);
+
+			return result.fail(new Error("Failed to vote for post."));
+		}
+	}
+
 	async keypom() {
 		// TODO: implement
 	}

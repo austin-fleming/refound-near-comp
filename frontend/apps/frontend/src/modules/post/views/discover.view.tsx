@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import type { Post } from "../domain/post.entity";
 import { usePostContracts } from "../hooks/use-post-contracts";
 import NextLink from "next/link";
+import { LoadingPage } from "@modules/common/components/loading-page";
+import { PostCard } from "../components/post-card";
 
 export const DiscoverView = () => {
 	const { adapter } = usePostContracts();
@@ -24,6 +26,16 @@ export const DiscoverView = () => {
 
 	return (
 		<>
+			<section className="flex flex-col w-full px-contentPadding max-w-screen-lg mx-auto min-h-[101vh]">
+				<div className="grid grid-cols-1 gap-4 py-24 md:grid-cols-3">
+					{posts ? (
+						posts.map((post) => <PostCard key={post.id} post={post} />)
+					) : (
+						<LoadingPage />
+					)}
+				</div>
+			</section>
+
 			<section className="max-w-screen-lg mx-auto mt-headerTopHeight p-sitepad">
 				<h1 className="text-4xl font-bold">Feed</h1>
 			</section>
