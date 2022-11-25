@@ -43,7 +43,9 @@ export const SiteHeader = () => {
 				>
 					{status === "DISCONNECTED" ? "Sign In" : "Sign Out"}
 				</button> */}
-				<a href="/create">Create</a>
+				<NextLink href="/create">
+					<a>Create</a>
+				</NextLink>
 
 				{isSignedIn ? (
 					<>
@@ -62,9 +64,9 @@ export const SiteHeader = () => {
 						</span>
 					</>
 				) : (
-					<a className="btn" href="/sign-in">
-						Sign In
-					</a>
+					<NextLink href="/sign-in">
+						<a className="btn">Sign In</a>
+					</NextLink>
 				)}
 
 				{/* {account.status === "connected" && (

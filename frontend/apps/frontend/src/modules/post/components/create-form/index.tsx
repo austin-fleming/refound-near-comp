@@ -19,6 +19,7 @@ import { useIpfs } from "@modules/post/hooks/use-ipfs";
 import { FileDropInput } from "./file-drop-input";
 import { AlertBar } from "@modules/common/components/alert-bar/alert-bar";
 import { useAccount } from "@modules/account/hooks/use-account";
+import NextLink from "next/link";
 
 type FormData = {
 	title?: string;
@@ -280,9 +281,11 @@ export const CreateForm = () => {
 				{!isSignedIn && (
 					<AlertBar kind="warning">
 						Please{" "}
-						<a className="link" href="/sign-up">
-							sign in
-						</a>{" "}
+						<NextLink href="/sign-in">
+							<a className="link" href="/sign-in">
+								sign in
+							</a>
+						</NextLink>{" "}
 						to create a post.
 					</AlertBar>
 				)}

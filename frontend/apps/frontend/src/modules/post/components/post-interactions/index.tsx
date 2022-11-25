@@ -5,6 +5,7 @@ import { DownArrowIcon, ThumbsUpIcon, UpArrowIcon } from "@modules/ui/icons/menu
 import { toast } from "@services/toast/toast";
 import { cloin } from "@utils/styling/cloin";
 import { useState } from "react";
+import NextLink from "next/link";
 
 export const PostInteractions = ({ post }: { post: Post }) => {
 	const { adapter } = usePostContracts();
@@ -213,18 +214,21 @@ export const PostInteractions = ({ post }: { post: Post }) => {
 				</button>
 			</div> */}
 
-			<a
-				className={cloin("btn btn-sm", !post && "btn-disabled")}
-				target="_blank"
+			<NextLink
 				href={
 					post
 						? `https://twitter.com/share?url=https://refound-journalism.app/posts?id=${post.id}`
 						: ""
 				}
-				rel="noreferrer"
 			>
-				Share
-			</a>
+				<a
+					className={cloin("btn btn-sm", !post && "btn-disabled")}
+					target="_blank"
+					rel="noreferrer"
+				>
+					Share
+				</a>
+			</NextLink>
 		</div>
 	);
 };

@@ -1,15 +1,13 @@
-import { useUI } from "@modules/common/hooks/ui-context";
 import HeroImage from "../../../../../public/assets/printing-machine-etching.jpg";
 import NextImage from "next/image";
 import type { NextPage } from "next";
-import {Grid, Card, CardContent, Typography, CardMedia, Button} from "@mui/material";
-import {useEffect, useState} from "react";
-import { toast } from "@services/toast/toast";
-import { styles } from "@celo/react-celo/lib/modals";
+import { Grid, Card, CardContent, Typography, CardMedia } from "@mui/material";
+import { useEffect, useState } from "react";
+import NextLink from "next/link";
 // import { useRefoundContracts } from "@modules/common/hooks/celo-context";
 
-import Typewriter from 'typewriter-effect';
-export const HomeView : NextPage = () => {
+import Typewriter from "typewriter-effect";
+export const HomeView: NextPage = () => {
 	const [posts, setPosts] = useState<any>();
 	//const { getAllImagePosts } = useRefoundContracts();
 
@@ -31,89 +29,130 @@ export const HomeView : NextPage = () => {
 	// 	});
 	// };
 
+	return (
+		<div>
+			<section className="relative w-full h-[110vh] pt-headerTopHeight">
+				<div className="relative w-full h-full max-w-screen-2xl p-contentPadding">
+					<div className="relative z-[10] text-stone-800 flex flex-col h-full justify-between pb-[10vh]">
+						<h1 className="text-[10vw] max-w-[80%] leading-[10vw] font-bold text-stone-800">
+							<span className="text-[8vw] font-normal italic">the</span>{" "}
+							<span className="accentColor">Platform</span>
+							<br />
+							<span className="text-[8vw] font-normal italic">for verified</span>{" "}
+							<span className="accentColor">Journalism</span>
+							{/* Own the Stories You Share with the World */}
+						</h1>
 
-return (
-	<div>
-		<section className="relative w-full h-[110vh] pt-headerTopHeight">
-			<div className="relative w-full h-full max-w-screen-2xl p-contentPadding">
-				<div className="relative z-[10] text-stone-800 flex flex-col h-full justify-between pb-[10vh]">
-					<h1 className="text-[10vw] max-w-[80%] leading-[10vw] font-bold text-stone-800">
-						<span className="text-[8vw] font-normal italic">the</span> <span className="accentColor">Platform</span>
-						<br />
-						<span className="text-[8vw] font-normal italic">for verified</span>  <span className="accentColor">Journalism</span>
-						{/* Own the Stories You Share with the World */}
-					</h1>
+						<p className="relative text-xl">
+							Empowered and Protected on the Blockchain
+						</p>
 
-					<p className="relative text-xl">Empowered and Protected on the Blockchain</p>
-
-					<div className="flex flex-row gap-4">
-						<a href="/sign-in" className="btn btn-lg" style={{borderRadius:"15px"}}>
-							Sign Up  
-						</a>
-						<a href="/learn-more" className="btn btn-lg btn-outline" style={{borderRadius:"15px"}}>
-							Learn More
-						</a>
+						<div className="flex flex-row gap-4">
+							<NextLink href="/sign-in">
+								<a className="btn btn-lg" style={{ borderRadius: "15px" }}>
+									Sign Up
+								</a>
+							</NextLink>
+							<NextLink href="/learn-more">
+								<a
+									href="/learn-more"
+									className="btn btn-lg btn-outline"
+									style={{ borderRadius: "15px" }}
+								>
+									Learn More
+								</a>
+							</NextLink>
+						</div>
 					</div>
-				</div>
 
-				<figure className="absolute top-0 bottom-0 right-0 w-[100%] z-0">
-					<NextImage src={HeroImage} layout="fill" objectFit="cover"/>
-					<span className="relative block w-full h-full bg-gradient-to-l from-background/80 to-background" />
-				</figure>
-			</div>
-		</section>
-		<Grid
+					<figure className="absolute top-0 bottom-0 right-0 w-[100%] z-0">
+						<NextImage src={HeroImage} layout="fill" objectFit="cover" />
+						<span className="relative block w-full h-full bg-gradient-to-l from-background/80 to-background" />
+					</figure>
+				</div>
+			</section>
+			<Grid
 				container
 				justifyContent="center"
 				sm={8}
-				style={{ margin: "0 auto", padding: "5%", paddingTop: "2%", paddingBottom:"1%" }}
+				style={{ margin: "0 auto", padding: "5%", paddingTop: "2%", paddingBottom: "1%" }}
 			>
-				
 				<Typewriter
 					options={{
-						strings: ['	Mint with Proof of Verification.'],
+						strings: ["	Mint with Proof of Verification."],
 						autoStart: true,
-						loop: true
+						loop: true,
 					}}
-					/>
+				/>
 			</Grid>
 			<Grid container>
 				<Grid item md={4}></Grid>
-				<Grid item sm={12} md={4} style={{margin:"0 2%"}}>
-						<p style={{display: "inline-block", marginRight: "20px"}}>Powered by</p>
-						<img style={{display: "inline-block", marginRight: "20px" }} src="https://drive.google.com/uc?export=view&id=1iwOakeo6AmeeOfrKqPd1zZDYTMaZyEwb" width="100"></img>
-						<img style={{display: "inline-block", marginRight: "20px"}}  width="100" src="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"></img>
-						<img style={{display: "inline-block", marginRight: "20px"}} width="50" src="https://drive.google.com/uc?export=view&id=1oPSpKyLZg_BY-i7EK6_WKF7xipPfxhTa"></img>
-						<img style={{display: "inline-block"}} width="60" src="https://drive.google.com/uc?export=view&id=14rxatVrOXGELTgKniBFuTN2bd1zS9ESe"></img>
+				<Grid item sm={12} md={4} style={{ margin: "0 2%" }}>
+					<p style={{ display: "inline-block", marginRight: "20px" }}>Powered by</p>
+					<img
+						style={{ display: "inline-block", marginRight: "20px" }}
+						src="https://drive.google.com/uc?export=view&id=1iwOakeo6AmeeOfrKqPd1zZDYTMaZyEwb"
+						width="100"
+					></img>
+					<img
+						style={{ display: "inline-block", marginRight: "20px" }}
+						width="100"
+						src="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"
+					></img>
+					<img
+						style={{ display: "inline-block", marginRight: "20px" }}
+						width="50"
+						src="https://drive.google.com/uc?export=view&id=1oPSpKyLZg_BY-i7EK6_WKF7xipPfxhTa"
+					></img>
+					<img
+						style={{ display: "inline-block" }}
+						width="60"
+						src="https://drive.google.com/uc?export=view&id=14rxatVrOXGELTgKniBFuTN2bd1zS9ESe"
+					></img>
 				</Grid>
 				<Grid item md={4}></Grid>
 			</Grid>
-			<Grid container
+			<Grid
+				container
 				justifyContent="center"
-				style={{ margin: "0 auto", padding: "5%", paddingTop: "2%" }}>
+				style={{ margin: "0 auto", padding: "5%", paddingTop: "2%" }}
+			>
 				<Grid item sm={8}>
-					<p style={{textAlign:"center", lineHeight:"1.8em"}}>
+					<p style={{ textAlign: "center", lineHeight: "1.8em" }}>
 						Refound’s mission is part of the Regenerative Finance (ReFi) movement,
-						specifically to leverage blockchain technology to help journalists and photographers directly sell their content to the public
-						and news media at higher margins and with greater financial control, helping
-						regenerate their economic cycle. Our decentralized application provides
-						journalists a platform to share their content, monetize it, and maintain
-						anonymity and safety by using a wallet sign-in. 
+						specifically to leverage blockchain technology to help journalists and
+						photographers directly sell their content to the public and news media at
+						higher margins and with greater financial control, helping regenerate their
+						economic cycle. Our decentralized application provides journalists a
+						platform to share their content, monetize it, and maintain anonymity and
+						safety by using a wallet sign-in.
 					</p>
 				</Grid>
 			</Grid>
 
-			<h1 style={{ fontSize: "2.5em", textAlign:"center" }} className="accentColor font-bold">
-					Who Are We Building For?
-				</h1>
-				<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+			<h1
+				style={{ fontSize: "2.5em", textAlign: "center" }}
+				className="font-bold accentColor"
+			>
+				Who Are We Building For?
+			</h1>
+			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h7" component="div" className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h7"
+								component="div"
+								className="accentColor"
+							>
 								Citizen and Freelance Journalists
 							</Typography>
-							<Typography variant="body2" color="text.secondary">Our publishing platform allows journalists and photographers to share first person, creative content from the frontlines swiftly, raise awareness, and sell directly to businesses.</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Our publishing platform allows journalists and photographers to
+								share first person, creative content from the frontlines swiftly,
+								raise awareness, and sell directly to businesses.
+							</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
@@ -125,14 +164,22 @@ return (
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h7" component="div"  className="accentColor">
-							NGOs / Government Bodies / Eye Witnesses
+							<Typography
+								gutterBottom
+								variant="h7"
+								component="div"
+								className="accentColor"
+							>
+								NGOs / Government Bodies / Eye Witnesses
 							</Typography>
-							<Typography variant="body2" color="text.secondary">Eye Witnesses, NGOs, and Government Bodies can verify content, helping build trust between journalists and the public.</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Eye Witnesses, NGOs, and Government Bodies can verify content,
+								helping build trust between journalists and the public.
+							</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							style={{ maxWidth: "50px", margin: "0 auto" }}
 							image="https://drive.google.com/uc?export=view&id=1knCpYtRgvBPHwqnzKblOy8HIEId2W1Hj"
 						/>
 					</Card>
@@ -140,50 +187,74 @@ return (
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h7" component="div"  className="accentColor">
-							The Media/Publications
+							<Typography
+								gutterBottom
+								variant="h7"
+								component="div"
+								className="accentColor"
+							>
+								The Media/Publications
 							</Typography>
-							<Typography variant="body2" color="text.secondary">A platform to curate and purchase licenses for direct, and verified frontline content. </Typography>
+							<Typography variant="body2" color="text.secondary">
+								A platform to curate and purchase licenses for direct, and verified
+								frontline content.{" "}
+							</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }} 
-							image="https://drive.google.com/uc?export=view&id=1Q-QSNh34BV2FJCwr7CQ02NjJX8azIZr3" 
+							style={{ maxWidth: "50px", margin: "0 auto" }}
+							image="https://drive.google.com/uc?export=view&id=1Q-QSNh34BV2FJCwr7CQ02NjJX8azIZr3"
 						/>
 					</Card>
 				</Grid>
-				
+
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h7" component="div"  className="accentColor">
-							News Consumers
+							<Typography
+								gutterBottom
+								variant="h7"
+								component="div"
+								className="accentColor"
+							>
+								News Consumers
 							</Typography>
-							<Typography variant="body2" color="text.secondary">Consumers of our platform can curate their News feed and directly support Journalists.</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Consumers of our platform can curate their News feed and directly
+								support Journalists.
+							</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							style={{ maxWidth: "50px", margin: "0 auto" }}
 							image="https://drive.google.com/uc?export=view&id=1VzrmUYwKsGU4OnjwP8F31WA7yTFlI2xt"
 						/>
 					</Card>
 				</Grid>
-
-
 			</Grid>
 
-			<h1 style={{ fontSize: "2.5em", textAlign:"center" }} className="accentColor font-bold">
-					Use Cases
-				</h1>
-				<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+			<h1
+				style={{ fontSize: "2.5em", textAlign: "center" }}
+				className="font-bold accentColor"
+			>
+				Use Cases
+			</h1>
+			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
 				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h6" component="div" className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h6"
+								component="div"
+								className="accentColor"
+							>
 								Verified Journalism
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
-							Our smart contracts allow a multisig wallet sign-in by a local NGO, a local governing body, and up to 2 eye witnesses to authenticate the veracity (verification) of the photo or article content.
+								Our smart contracts allow a multisig wallet sign-in by a local NGO,
+								a local governing body, and up to 2 eye witnesses to authenticate
+								the veracity (verification) of the photo or article content.
 							</Typography>
 						</CardContent>
 						<CardMedia
@@ -196,52 +267,75 @@ return (
 				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h6"
+								component="div"
+								className="accentColor"
+							>
 								War Crimes Documentation
 							</Typography>
-							<Typography variant="body2" color="text.secondary">Our tools may also apply to war crimes providing a protocol for documentation and verification of events.</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Our tools may also apply to war crimes providing a protocol for
+								documentation and verification of events.
+							</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							style={{ maxWidth: "50px", margin: "0 auto" }}
 							image="https://drive.google.com/uc?export=view&id=1x8MHoz7C0hGxrBEnsQLWWbyT9mm27BOE"
 						/>
 					</Card>
 				</Grid>
-				
+
 				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h6" component="div"  className="accentColor">
-							Media Licensing Management
+							<Typography
+								gutterBottom
+								variant="h6"
+								component="div"
+								className="accentColor"
+							>
+								Media Licensing Management
 							</Typography>
-							<Typography variant="body2" color="text.secondary">Our smart contracts give journalists the ability to create and manage multiple licenses with their NFTS and buyers the ability to purchase multiple use licenses for an NFT.</Typography>
+							<Typography variant="body2" color="text.secondary">
+								Our smart contracts give journalists the ability to create and
+								manage multiple licenses with their NFTS and buyers the ability to
+								purchase multiple use licenses for an NFT.
+							</Typography>
 						</CardContent>
 						<CardMedia
 							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }} 
+							style={{ maxWidth: "50px", margin: "0 auto" }}
 							image="https://drive.google.com/uc?export=view&id=1dEYRKrCB1haGKzLyvrmaaNCtVQjyun4h"
 						/>
 					</Card>
 				</Grid>
 			</Grid>
 
-	
+			<h1
+				style={{ fontSize: "2.5em", textAlign: "center" }}
+				className="font-bold accentColor"
+			>
+				Features
+			</h1>
 
-			<h1 style={{ fontSize: "2.5em", textAlign:"center" }} className="accentColor font-bold">
-					Features
-				</h1>			
-
-			
-				<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
+			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 400 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="div"
+								className="accentColor"
+							>
 								Simplified Publishing
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
-								We allow Journalists to swiftly create and sell NFTs of their content directly to news rooms, the media, and the public. 
+								We allow Journalists to swiftly create and sell NFTs of their
+								content directly to news rooms, the media, and the public.
 							</Typography>
 						</CardContent>
 						<CardMedia
@@ -254,11 +348,21 @@ return (
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 400 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="div"
+								className="accentColor"
+							>
 								Proof of Witness
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
-								When an NFT is created, it has to pass through our smart contract and it requires Third Party Verification in order for it to be validated as true and confirmed for minting. Allows a multisig wallet sign-in to allow a local NGO, a local governing body, and up to 2 eye witnesses to authenticate the veracity (verification) of the photo or article content.
+								When an NFT is created, it has to pass through our smart contract
+								and it requires Third Party Verification in order for it to be
+								validated as true and confirmed for minting. Allows a multisig
+								wallet sign-in to allow a local NGO, a local governing body, and up
+								to 2 eye witnesses to authenticate the veracity (verification) of
+								the photo or article content.
 							</Typography>
 						</CardContent>
 						<CardMedia
@@ -270,14 +374,22 @@ return (
 				</Grid>
 			</Grid>
 			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-			<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="div"
+								className="accentColor"
+							>
 								Revenue Sharing
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
-								Journalists can share revenue from their photos and articles with those impacted by conflict. The smart contract will split the royalties between the journalist and the NGO or to the person photographed.
+								Journalists can share revenue from their photos and articles with
+								those impacted by conflict. The smart contract will split the
+								royalties between the journalist and the NGO or to the person
+								photographed.
 							</Typography>
 						</CardContent>
 						<CardMedia
@@ -287,15 +399,22 @@ return (
 						/>
 					</Card>
 				</Grid>
-				
+
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
-							Easy one click on-boarding on NEAR using Keypom 
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="div"
+								className="accentColor"
+							>
+								Easy one click on-boarding on NEAR using Keypom
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
-							Only NEAR allows the creation of programmable keys, which they call “keypoms.” These keys allow users to start using our dApp right away without needing to create an account.
+								Only NEAR allows the creation of programmable keys, which they call
+								“keypoms.” These keys allow users to start using our dApp right away
+								without needing to create an account.
 							</Typography>
 						</CardContent>
 						<CardMedia
@@ -310,7 +429,12 @@ return (
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="div"
+								className="accentColor"
+							>
 								In app camera capability
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
@@ -330,11 +454,17 @@ return (
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="div"
+								className="accentColor"
+							>
 								Automated Licensing
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
-								Licenses are stored on chain and our smart contracts allow NFT minters to purchase multiple licenses for different uses.
+								Licenses are stored on chain and our smart contracts allow NFT
+								minters to purchase multiple licenses for different uses.
 							</Typography>
 						</CardContent>
 						<CardMedia
@@ -346,11 +476,15 @@ return (
 				</Grid>
 			</Grid>
 			<Grid container justifyContent="center" sm={8} style={{ margin: "0 auto" }}>
-				
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="div" className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="div"
+								className="accentColor"
+							>
 								Immutable and Decentralized
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
@@ -371,11 +505,17 @@ return (
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 350 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="div"
+								className="accentColor"
+							>
 								Publicly Visible Chain of Approvals
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
-								On chain data is public and transparent, displaying the verifying parties that were involved in verification.
+								On chain data is public and transparent, displaying the verifying
+								parties that were involved in verification.
 							</Typography>
 						</CardContent>
 						<CardMedia
@@ -390,7 +530,12 @@ return (
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
 					<Card sx={{ maxWidth: 600, height: 300 }}>
 						<CardContent>
-							<Typography gutterBottom variant="h5" component="div"  className="accentColor">
+							<Typography
+								gutterBottom
+								variant="h5"
+								component="div"
+								className="accentColor"
+							>
 								Cryptocurrency Benefits
 							</Typography>
 							<Typography variant="body2" color="text.secondary">
@@ -399,7 +544,7 @@ return (
 								easy setup crypto wallet on Near. Cryptocurrency provides a transfer
 								of value that is much faster than banks, and much cheaper even in
 								cases of international transfers. Account transactions are publicly
-								auditable and secure, and easily accessible with a smartphone. 
+								auditable and secure, and easily accessible with a smartphone.
 							</Typography>
 						</CardContent>
 						<CardMedia
@@ -433,8 +578,6 @@ return (
 					))}
 			</Grid> */}
 
-		
-
 			<Grid container justifyContent="center" sm={12} style={{ margin: "0 auto" }}>
 				<h1
 					className="font-bold accentColor"
@@ -453,11 +596,15 @@ return (
 				sm={8}
 				style={{ margin: "0 auto", marginBottom: "5%" }}
 			>
-				<a href="/sign-in" className="btn btn-lg backgroundColorAccent"  style={{borderRadius:"15px"}}>
-							Sign Up
-						</a>
+				<NextLink href="/sign-in">
+					<a
+						className="btn btn-lg backgroundColorAccent"
+						style={{ borderRadius: "15px" }}
+					>
+						Sign Up
+					</a>
+				</NextLink>
 			</Grid>
-			
-	</div>
+		</div>
 	);
-}
+};

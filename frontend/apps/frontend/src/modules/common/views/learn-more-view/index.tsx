@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
 import * as React from "react";
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
 import { Grid } from "@mui/material";
+import NextLink from "next/link";
 
 export const LearnMoreView: NextPage = () => {
 	return (
@@ -51,9 +52,15 @@ export const LearnMoreView: NextPage = () => {
 						className="flex flex-row items-center w-full gap-2 justify-left"
 						style={{ marginTop: "20px" }}
 					>
-						<a href="/sign-in" className="btn btn-lg"  style={{borderRadius:"15px"}}>
-							Sign Up
-						</a>
+						<NextLink href="/sign-in">
+							<a
+								href="/sign-in"
+								className="btn btn-lg"
+								style={{ borderRadius: "15px" }}
+							>
+								Sign Up
+							</a>
+						</NextLink>
 					</div>
 				</Grid>
 			</Grid>
@@ -235,7 +242,7 @@ export const LearnMoreView: NextPage = () => {
 						content aggregating sites in Web 2, which keep 75% to 85% of revenue
 						proceeds for themselves and only share 15% to 25% with the creators. Refound
 						will help regenerate your financial standing as a creator of content by
-						giving you greater monetization proceeds of your content. 
+						giving you greater monetization proceeds of your content.
 					</p>
 				</Grid>
 			</Grid>
@@ -335,15 +342,17 @@ export const LearnMoreView: NextPage = () => {
 				style={{ margin: "0 auto", marginBottom: "5%" }}
 			>
 				{
-					<a href="/sign-up">
-						<Button
-							as="button"
-							size="base"
-							label="Sign Up Today"
-							color="secondary"
-							align="center"
-						/>
-					</a>
+					<NextLink href="/sign-in">
+						<a>
+							<Button
+								as="button"
+								size="base"
+								label="Sign Up Today"
+								color="secondary"
+								align="center"
+							/>
+						</a>
+					</NextLink>
 				}
 			</Grid>
 			<Grid
@@ -361,14 +370,16 @@ export const LearnMoreView: NextPage = () => {
 					<h1 className="font-bold" style={{ fontSize: "2em" }}>
 						HELPFUL LINKS
 					</h1>
-					<a
-						className="hover:underline"
-						href="https://docs.alchemy.com/docs/how-to-add-near-aurora-to-metamask"
-						target="_blank"
-						rel="noreferrer"
-					>
-						How To Add Near Aurora To Metamask
-					</a>
+					<NextLink href="https://docs.alchemy.com/docs/how-to-add-near-aurora-to-metamask">
+						<a
+							className="hover:underline"
+							href="https://docs.alchemy.com/docs/how-to-add-near-aurora-to-metamask"
+							target="_blank"
+							rel="noreferrer"
+						>
+							How To Add Near Aurora To Metamask
+						</a>
+					</NextLink>
 					<div style={{ marginTop: "20px", maxWidth: "800", height: "25vh" }}>
 						<iframe
 							className="w-full h-full"
