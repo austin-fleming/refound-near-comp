@@ -55,7 +55,6 @@ export const HomeView: NextPage = () => {
 							</NextLink>
 							<NextLink href="/learn-more">
 								<a
-									href="/learn-more"
 									className="btn btn-lg btn-outline"
 									style={{ borderRadius: "15px" }}
 								>
