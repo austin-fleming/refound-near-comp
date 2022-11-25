@@ -294,10 +294,13 @@ export const CreateForm = () => {
 						state.submissionStatus === "SUCCESS" && "pointer-events-none btn-success",
 						state.submissionStatus === "FAIL" && "pointer-events-none btn-error",
 					)}
-					disabled={!isSignedIn}
+					disabled={!isSignedIn || state.submissionStatus !== "IDLE"}
 					onClick={onSubmit}
 				>
-					Submit
+					{state.submissionStatus === "IDLE" && "Submit"}
+					{state.submissionStatus === "SUBMITTING" && "Uploading..."}
+					{state.submissionStatus === "FAIL" && "Error"}
+					{state.submissionStatus === "SUCCESS" && "Success!"}
 				</button>
 
 				{state.validationErrors.length > 0 && (
@@ -306,6 +309,14 @@ export const CreateForm = () => {
 						{state.validationErrors.map((errorText) => (
 							<p key={errorText}>{errorText}</p>
 						))}
+					</div>
+				)}
+
+				{state.submissionStatus === "SUBMITTING" && (
+					<div className="absolute w-full h-full p-sitepad bg-background/60">
+						<div className="flex flex-col items-center justify-center w-full py-12 border-2 border-solid rounded-md px-sitepad bg-background border-primary">
+							<p className="text-lg font-bold">Uploading Post</p>
+						</div>
 					</div>
 				)}
 			</form>

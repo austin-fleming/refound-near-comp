@@ -2,6 +2,7 @@ import type { Result } from "@utils/monads";
 import { result } from "@utils/monads";
 import type { WalletConnection } from "near-api-js";
 import { Contract as NearContract } from "near-api-js";
+import type { Post } from "./domain/post.entity";
 
 type SeriesId = number;
 type Base64VecU8 = string;
@@ -48,19 +49,23 @@ type JsonSeries = {
 const queries = ["get_series", "get_votes", "get_total_votes", "get_vote_result"];
 interface SeriesQueries {
 	get_series: (query: { from_index?: number; limit?: number }) => Promise<JsonSeries[]>;
-	get_votes: (query: { id: number }) => Promise<Record<AccountId, number>>;
+	get_votes: (query: { id: string }) => Promise<Record<AccountId, number>>;
 	get_total_votes: (query: { id: number }) => Promise<number>;
 	get_vote_result: (query: { id: number }) => Promise<Timestamp | null | undefined>;
 }
 
 const commands = ["create_series", "change_series_verification", "vote", "set_vote_result"];
 interface SeriesCommands {
-	create_series: (payload: {
-		id: number;
-		metadata: TokenMetadata;
-		royalty?: Record<AccountId, number>;
-		price?: number;
-	}) => Promise<void>;
+	create_series: (
+		payload: {
+			id: number;
+			metadata: TokenMetadata;
+			royalty?: Record<AccountId, number>;
+			price?: number;
+		},
+		gas?: string,
+		deposit?: string,
+	) => Promise<void>;
 	change_series_verification: (payload: { id: number; verified: boolean }) => Promise<void>;
 	vote: (payload: { id: number }) => Promise<void>;
 	set_vote_result: (payload: { id: number }) => Promise<void>;
@@ -114,11 +119,46 @@ export class PostContractAdapter {
 	//----------------------------------------
 	//----------------------------------------
 
-	async getPosts(query: { from_index?: number; limit?: number }): Promise<Result<JsonSeries[]>> {
+	async getPosts(query: { from_index?: number; limit?: number }): Promise<Result<Post[]>> {
 		try {
-			const series: JsonSeries[] = await this.contract.get_series(query);
+			const posts: Post[] = (await this.contract.get_series(query)).map((series) => ({
+				id: series.series_id,
+				owner: series.owner_id,
+				title: series.metadata.title || "Untitled",
+				description: series.metadata.description || "",
+				imageLink: series.metadata.media || "/placeholder.jpeg",
+				isVerified: series.verified,
+			}));
+			/* console.log({ series }); */
+			/* const posts: Post[] = await Promise.all(
+				series.map(async (series) => {
+					const verifications = (
+						await this.getPostVerifiers({ id: series.series_id })
+					).unwrapOrElse((error) => {
+						throw error;
+					});
 
-			return result.ok(series);
+					console.log({ verifications });
+
+					const verifiers: Post["verifiers"] = Object.keys(verifications).reduce(
+						(previous: Post["verifiers"], currentKey) =>
+							verifications[currentKey] > 0 ? [...previous, currentKey] : previous,
+						[],
+					);
+
+					return {
+						id: series.series_id,
+						owner: series.owner_id,
+						title: series.metadata.title || "Untitled",
+						description: series.metadata.description || "",
+						imageLink: series.metadata.media || "/placeholder.jpeg",
+						isVerified: verifiers.length > 0,
+						verifiers,
+					};
+				}),
+			); */
+
+			return result.ok(posts);
 		} catch (error) {
 			console.error(error);
 
@@ -131,7 +171,7 @@ export class PostContractAdapter {
 	 */
 	async getPostVerifiers(query: { id: number }): Promise<Result<Record<AccountId, number>>> {
 		try {
-			const votes = await this.contract.get_votes(query);
+			const votes = await this.contract.get_votes({ id: `${query.id}` });
 
 			return result.ok(votes);
 		} catch (error) {
@@ -184,15 +224,27 @@ export class PostContractAdapter {
 		ipfsLink: string;
 	}): Promise<Result<true>> {
 		try {
+			// TODO: currently enormous query just to find next id
+			const nextId = await this.contract
+				.get_series({})
+				.then((series) => series[series.length - 1].series_id + 1);
+
+			// TODO: Should be calculated based on bytes to be stored.
+			const yoctoDeposit = "10000000000000000000000";
+
 			// TODO: is there some kind of confirmation we can get out of contract calls?
-			await this.contract.create_series({
-				id: 0, // TODO: what is this?
-				metadata: {
-					title,
-					description,
-					media: ipfsLink,
+			await this.contract.create_series(
+				{
+					id: nextId, // TODO: what is this?
+					metadata: {
+						title,
+						description,
+						media: ipfsLink,
+					},
 				},
-			});
+				undefined,
+				yoctoDeposit,
+			);
 
 			return result.ok(true);
 		} catch (error) {
