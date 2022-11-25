@@ -1,4 +1,3 @@
-import { SignUpForm } from "@modules/account/components/sign-up-form";
 import { ContentSection } from "@modules/ui/content-section";
 
 export const SignUpView = () => {
