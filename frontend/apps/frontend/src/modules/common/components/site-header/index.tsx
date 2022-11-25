@@ -3,6 +3,7 @@ import { Sidebar } from "../sidebar";
 import NextLink from "next/link";
 import { useNear } from "@modules/account/hooks/use-near";
 import { useAccount } from "@modules/account/hooks/use-account";
+import { trimText } from "@utils/trim-text";
 // import { useAccount } from "@modules/account/hooks/use-auth";
 
 export const SiteHeader = () => {
@@ -11,24 +12,15 @@ export const SiteHeader = () => {
 	const { isSignedIn, signOut, id, role } = useAccount();
 
 	return (
-		<header className="fixed top-0 left-0 right-0 flex flex-row items-center justify-between border-b-2 border-solid h-headerTopHeight border-primary z-[5000] bg-white">
+		<header className="px-sitepad fixed top-0 left-0 right-0 flex flex-row items-center justify-between border-b-2 border-solid h-headerTopHeight border-primary z-[5000] bg-white">
 			<NextLink href="/">
-				<div>
-					<img
-						style={{ display: "inline-block", marginBottom: "10px" }}
-						src="/favicon-32x32.png"
-						width="32"
-					></img>
-					<h1
-						className="font-normal leading-none text-[2em]"
-						style={{ display: "inline-block", marginLeft: "10px" }}
-					>
-						refound
-					</h1>
-				</div>
+				<a className="flex flex-row gap-2 items-center justify-center text-[1em]">
+					<img className="w-[1.5em] h-[1.5em] object-contain" src="/favicon-32x32.png" />
+					<h1 className="font-normal leading-none text-[2em]">refound</h1>
+				</a>
 			</NextLink>
 
-			<div className="flex flex-row items-center">
+			<div className="flex flex-row items-center gap-8">
 				{/* <button
 					type="button"
 					className={cloin("btn", status === "CONNECTING" && "loading")}
@@ -43,26 +35,37 @@ export const SiteHeader = () => {
 				>
 					{status === "DISCONNECTED" ? "Sign In" : "Sign Out"}
 				</button> */}
-				<NextLink href="/create">
-					<a>Create</a>
-				</NextLink>
+				<nav className="flex flex-row gap-4 font-bold">
+					<NextLink href="/create">
+						<a>Create</a>
+					</NextLink>
+
+					<NextLink href="/discover">
+						<a>Discover</a>
+					</NextLink>
+
+					<NextLink href="/create">
+						<a>Free Trial</a>
+					</NextLink>
+				</nav>
 
 				{isSignedIn ? (
-					<>
+					<div className="flex flex-row items-center justify-center gap-2">
+						<div className="flex flex-row justify-center gap-4 rounded-full badge">
+							<span className="text-background">{trimText(id, 15)}</span>
+							<span className="text-background">as {role}</span>
+						</div>
+
 						<button
 							type="button"
-							className="btn"
+							className="btn btn-sm"
 							onClick={() => {
 								signOut();
 							}}
 						>
 							Sign Out
 						</button>
-
-						<span>
-							{id} || {role}
-						</span>
-					</>
+					</div>
 				) : (
 					<NextLink href="/sign-in">
 						<a className="btn">Sign In</a>
@@ -112,7 +115,7 @@ export const SiteHeader = () => {
 					{isLoggedIn ? "Near Sign Out" : "Near Sign In"}
 				</button> */}
 
-				<Sidebar />
+				{/* <Sidebar /> */}
 			</div>
 		</header>
 	);
