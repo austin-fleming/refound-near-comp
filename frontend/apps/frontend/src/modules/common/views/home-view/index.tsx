@@ -108,10 +108,10 @@ export const HomeView: NextPage = () => {
 				<Grid item md={4}></Grid>
 				<Grid item sm={12} md={4} style={{ margin: "0 2%" }}>
 					<p style={{ display: "inline-block", marginRight: "20px" }}>Powered by</p>
-					<NextImage src={NextJsIcon} width="100" height="20" style={{ paddingRight: "20px" }}/>
-					<NextImage src={NearIcon} width="100" height="20" style={{ paddingRight: "20px" }}/>
-					<NextImage src={ipfsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/>
-					<NextImage src={w3jsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/>
+					<span style={{ display: "inline-block", marginRight: "20px" }}><NextImage src={NextJsIcon} width="100" height="20" style={{ paddingRight: "20px" }}/></span>
+					<span style={{ display: "inline-block", marginRight: "20px" }}><NextImage src={NearIcon} width="100" height="20" style={{ paddingRight: "20px" }}/></span>
+					<span style={{ display: "inline-block", marginRight: "20px" }}><NextImage src={ipfsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/></span>
+					<span style={{ display: "inline-block", marginRight: "20px" }}><NextImage src={w3jsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/></span>
 				</Grid>
 				<Grid item md={4}></Grid>
 			</Grid>
