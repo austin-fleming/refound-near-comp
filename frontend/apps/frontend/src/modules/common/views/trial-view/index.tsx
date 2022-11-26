@@ -4,6 +4,7 @@ import { cloin } from "@utils/styling/cloin";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
+import { config } from "@config/config";
 
 export const TrialView: NextPage = () => {
 	const router = useRouter();
@@ -31,10 +32,7 @@ export const TrialView: NextPage = () => {
 
 			<div className="w-full">
 				<div className="w-full pb-[2rem]">
-					<NextLink
-						href="https://testnet.mynearwallet.com/linkdrop/v1.keypom.testnet/2vKbEcKg2sBjEewj1Nb7mFjcHz7D2DpLBveGDSdVDSuzT2oBXxUTJZwGbdHAAodTjDFRfxHtf27AntVmyzRwJApV
-https://testnet.mynearwallet.com/linkdrop/v1.keypom.testnet/49e2pkjCZM1CRMhfWoKQiVgC45wqa2ADJrRDmFSwz7q3TA3c8PywH177CuWKwNvCJxbjAYx35XMcVU7Qr4Y3kbWX"
-					>
+					<NextLink href={config.keypom.trials.user}>
 						<a
 							target="_blank"
 							className={cloin(
@@ -51,10 +49,7 @@ https://testnet.mynearwallet.com/linkdrop/v1.keypom.testnet/49e2pkjCZM1CRMhfWoKQ
 				</div>
 
 				<div className="w-full pb-[2rem]">
-					<NextLink
-						href="https://testnet.mynearwallet.com/linkdrop/v1.keypom.testnet/21Mvz9E4T8UGU7e2byhPWTnCw5CSoLPYnViTr9BXZ46aXNgYXzZ9Sn9pbRewkNnyHBqZwTmsJZrGtJWJhbMLvfss
-https://testnet.mynearwallet.com/linkdrop/v1.keypom.testnet/3NFWNmfVzmkowrCECrf64A6DYV9kQLAQpCsHXdkrV2EArdckjXgZEEH3WKkodP7GY6RZsfmC5RN4pyfifg9SCmiD"
-					>
+					<NextLink href={config.keypom.trials.ngo}>
 						<a
 							className={cloin(
 								"btn btn-lg w-full rounded-md",

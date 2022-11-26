@@ -2,6 +2,7 @@ import type { Result } from "@utils/monads";
 import { result } from "@utils/monads";
 import type { WalletConnection } from "near-api-js";
 import { Contract as NearContract } from "near-api-js";
+import { config } from "@config/config";
 import type { LicenseType, Post } from "./domain/post.entity";
 
 type SeriesId = number;
@@ -194,7 +195,13 @@ export class PostContractAdapter {
 
 	async getPosts(query: { from_index?: number; limit?: number }): Promise<Result<Post[]>> {
 		try {
-			const series = await this.contract.get_series(query);
+			const series = await (
+				await this.contract.get_series(query)
+			).filter(
+				(seriesItem) =>
+					// @ts-expect-error: strict typing of config causes error with general number type from series_id
+					!config.content.moderationList.posts.includes(seriesItem.series_id),
+			);
 
 			const posts: Post[] = await Promise.all(
 				series.map(async (item) => this.postDtoToEntity(item)),

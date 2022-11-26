@@ -24,4 +24,15 @@ export const config = {
 				? process.env.NEXT_PUBLIC_SITE_HOST_PROD
 				: process.env.NEXT_PUBLIC_SITE_HOST_DEV,
 	},
+	content: {
+		moderationList: {
+			posts: [3],
+		},
+	},
+	keypom: {
+		trials: {
+			user: "https://testnet.mynearwallet.com/linkdrop/v1.keypom.testnet/49e2pkjCZM1CRMhfWoKQiVgC45wqa2ADJrRDmFSwz7q3TA3c8PywH177CuWKwNvCJxbjAYx35XMcVU7Qr4Y3kbWX",
+			ngo: "https://testnet.mynearwallet.com/linkdrop/v1.keypom.testnet/3NFWNmfVzmkowrCECrf64A6DYV9kQLAQpCsHXdkrV2EArdckjXgZEEH3WKkodP7GY6RZsfmC5RN4pyfifg9SCmiD",
+		},
+	},
 } as const;
