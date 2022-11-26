@@ -1,4 +1,24 @@
 import HeroImage from "../../../../../public/assets/printing-machine-etching.jpg";
+import NextJsIcon from "../../../../../public/assets/nextjs-icon.png";
+import NearIcon from "../../../../../public/assets/near.png";
+import ipfsIcon from "../../../../../public/assets/ipfs.png";
+import w3jsIcon from "../../../../../public/assets/web3js.jpeg";
+import JournalistIcon from "../../../../../public/assets/journalist.png";
+import NewsIcon from "../../../../../public/assets/newspaper.png";
+import NGOIcon from "../../../../../public/assets/team.png";
+import ConsumersIcon from "../../../../../public/assets/discuss.png";
+import NewsPaperIcon from "../../../../../public/assets/news-paper.png";
+import WarCrimesIcon from "../../../../../public/assets/stock.png";
+import LicenseIcon from "../../../../../public/assets/contract.png";
+
+import  PublishingIcon from "../../../../../public/assets/sosicon.png";
+import  PoWIcon	from "../../../../../public/assets/govicon.png";
+import  RevenueIcon from "../../../../../public/assets/money.png";
+import KeyPomIcon from "../../../../../public/assets/KeyPOM_400x400.jpeg";
+import  CameraIcon from "../../../../../public/assets/cameraicon.png";
+import AutomationIcon from "../../../../../public/assets/smartcontractsicon.png";
+import DecentralizedIcon from "../../../../../public/assets/decentralizedicon.png";
+import  ChainIcon from "../../../../../public/assets/beneficiaryicon.png";
 import NextImage from "next/image";
 import type { NextPage } from "next";
 import { Grid, Card, CardContent, Typography, CardMedia } from "@mui/material";
@@ -88,26 +108,10 @@ export const HomeView: NextPage = () => {
 				<Grid item md={4}></Grid>
 				<Grid item sm={12} md={4} style={{ margin: "0 2%" }}>
 					<p style={{ display: "inline-block", marginRight: "20px" }}>Powered by</p>
-					<img
-						style={{ display: "inline-block", marginRight: "20px" }}
-						src="https://drive.google.com/uc?export=view&id=1iwOakeo6AmeeOfrKqPd1zZDYTMaZyEwb"
-						width="100"
-					></img>
-					<img
-						style={{ display: "inline-block", marginRight: "20px" }}
-						width="100"
-						src="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"
-					></img>
-					<img
-						style={{ display: "inline-block", marginRight: "20px" }}
-						width="50"
-						src="https://drive.google.com/uc?export=view&id=1oPSpKyLZg_BY-i7EK6_WKF7xipPfxhTa"
-					></img>
-					<img
-						style={{ display: "inline-block" }}
-						width="60"
-						src="https://drive.google.com/uc?export=view&id=14rxatVrOXGELTgKniBFuTN2bd1zS9ESe"
-					></img>
+					<NextImage src={NextJsIcon} width="100" height="20" style={{ paddingRight: "20px" }}/>
+					<NextImage src={NearIcon} width="100" height="20" style={{ paddingRight: "20px" }}/>
+					<NextImage src={ipfsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/>
+					<NextImage src={w3jsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/>
 				</Grid>
 				<Grid item md={4}></Grid>
 			</Grid>
@@ -153,11 +157,9 @@ export const HomeView: NextPage = () => {
 								raise awareness, and sell directly to businesses.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1qvtNV6z1nc691q6TtcrigRJEaJgdqbKk"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={JournalistIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
@@ -176,11 +178,9 @@ export const HomeView: NextPage = () => {
 								helping build trust between journalists and the public.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1knCpYtRgvBPHwqnzKblOy8HIEId2W1Hj"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={NGOIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={3} style={{ padding: "3%" }}>
@@ -199,11 +199,9 @@ export const HomeView: NextPage = () => {
 								frontline content.{" "}
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1Q-QSNh34BV2FJCwr7CQ02NjJX8azIZr3"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={NewsIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 
@@ -223,11 +221,9 @@ export const HomeView: NextPage = () => {
 								support Journalists.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1VzrmUYwKsGU4OnjwP8F31WA7yTFlI2xt"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={ConsumersIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 			</Grid>
@@ -256,11 +252,9 @@ export const HomeView: NextPage = () => {
 								the veracity (verification) of the photo or article content.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1XJ24N-F8HTjkij4ZVUxziJ4ve64vt0Wj"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={NewsPaperIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={4} style={{ padding: "3%" }}>
@@ -279,11 +273,9 @@ export const HomeView: NextPage = () => {
 								documentation and verification of events.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1x8MHoz7C0hGxrBEnsQLWWbyT9mm27BOE"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={WarCrimesIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 
@@ -304,11 +296,9 @@ export const HomeView: NextPage = () => {
 								purchase multiple use licenses for an NFT.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "50px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1dEYRKrCB1haGKzLyvrmaaNCtVQjyun4h"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={LicenseIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 			</Grid>
@@ -337,11 +327,9 @@ export const HomeView: NextPage = () => {
 								content directly to news rooms, the media, and the public.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1452x4aUtPiezOASIrOLfCIrxs0nwkewx"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={PublishingIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
@@ -364,11 +352,9 @@ export const HomeView: NextPage = () => {
 								the photo or article content.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1Psj6Q25XRCsAEkURGdUFnksLfvplj7k_"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={PoWIcon} width="100" height="90"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 			</Grid>
@@ -391,11 +377,9 @@ export const HomeView: NextPage = () => {
 								photographed.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1tBO3Cr40zeSoBiP-mUcqD2HyH1wmE_l5"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={RevenueIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 
@@ -416,11 +400,9 @@ export const HomeView: NextPage = () => {
 								without needing to create an account.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1rvQ7EwQOgB_g0M_6NcS7frLD6iTq5Gv0"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={KeyPomIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 			</Grid>
@@ -443,11 +425,9 @@ export const HomeView: NextPage = () => {
 								doctored.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto", marginTop: "5%" }}
-							image="https://drive.google.com/uc?export=view&id=1if2YgQXUDxuwbaPwRkQYLRY1qXZ8W8JZ"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={CameraIcon} width="100" height="70"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
@@ -466,11 +446,9 @@ export const HomeView: NextPage = () => {
 								minters to purchase multiple licenses for different uses.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1bEspbn-09HkoZX8TknAFgY5o5eXgXhIl"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={AutomationIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 			</Grid>
@@ -494,11 +472,9 @@ export const HomeView: NextPage = () => {
 								article when it was uploaded by the journalist.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1AIa2MzZwM9aVZxAKL_C1srYwK4jR2VXv"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={DecentralizedIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
@@ -517,11 +493,9 @@ export const HomeView: NextPage = () => {
 								parties that were involved in verification.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1lyMWSBpnWRq90lHuH-XK_V440TN1QIMv"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={ChainIcon} width="100" height="100"/>
+						</CardMedia>
 					</Card>
 				</Grid>
 			</Grid>
@@ -546,11 +520,9 @@ export const HomeView: NextPage = () => {
 								auditable and secure, and easily accessible with a smartphone.
 							</Typography>
 						</CardContent>
-						<CardMedia
-							component="img"
-							style={{ maxWidth: "150px", margin: "0 auto" }}
-							image="https://drive.google.com/uc?export=view&id=1TeZcAM43aiZS6NoaVMd0WSorbs1h7fPf"
-						/>
+						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
+							<NextImage src={NearIcon} width="100" height="30"/> 
+						</CardMedia>
 					</Card>
 				</Grid>
 			</Grid>
