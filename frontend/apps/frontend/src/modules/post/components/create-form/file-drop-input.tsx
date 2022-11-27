@@ -5,6 +5,9 @@ import { useReducer, useRef } from "react";
 import NextImage from "next/image";
 import { getImageDimensions } from "./get-image-dimensions";
 import { PolyButton } from "@modules/common/components/poly-button";
+import { toast } from "@services/toast/toast";
+
+const ALLOWED_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png"];
 
 type ReducerState = {
 	dropDepth: number;
@@ -49,9 +52,10 @@ const reducer = (state: ReducerState, action: ReducerAction) => {
 const isAcceptableFile = (file: File): boolean => {
 	const splitFileName = file.name.split(".");
 	if (splitFileName.length === 0) return false;
-	const fileExtension = splitFileName[splitFileName.length - 1];
 
-	return ["jpeg", "png"].includes(fileExtension.toLowerCase());
+	const fileExtension = `.${splitFileName[splitFileName.length - 1]}`;
+
+	return ALLOWED_IMAGE_EXTENSIONS.includes(fileExtension.toLowerCase());
 };
 
 export const FileDropInput = ({
@@ -107,27 +111,36 @@ export const FileDropInput = ({
 		e.stopPropagation();
 
 		const files = [...e.dataTransfer.files];
-		if (files && files.length > 0) {
-			const file = files[0];
 
-			if (!isAcceptableFile(file)) {
-				dispatch({ type: "RESET" });
-				return;
-			}
-
-			getImageDimensions(file).then((dimensions) => {
-				dispatch({
-					type: "SET_FILE",
-					payload: {
-						file: files[0],
-						fileWidth: dimensions.width,
-						fileHeight: dimensions.height,
-					},
-				});
-				dispatch({ type: "SET_DROP_DEPTH", payload: 0 });
-				dispatch({ type: "SET_IN_DROP_ZONE", payload: false });
-			});
+		if (!files || files.length === 0) {
+			return;
 		}
+
+		const file = files[0];
+
+		if (!isAcceptableFile(file)) {
+			dispatch({ type: "RESET" });
+			toast.error(
+				`Image must have have one of the following extensions: ${ALLOWED_IMAGE_EXTENSIONS.join(
+					", ",
+				)}`,
+				"invalid-image-extension",
+			);
+			return;
+		}
+
+		getImageDimensions(file).then((dimensions) => {
+			dispatch({
+				type: "SET_FILE",
+				payload: {
+					file: files[0],
+					fileWidth: dimensions.width,
+					fileHeight: dimensions.height,
+				},
+			});
+			dispatch({ type: "SET_DROP_DEPTH", payload: 0 });
+			dispatch({ type: "SET_IN_DROP_ZONE", payload: false });
+		});
 	};
 
 	const handleClick = (e: MouseEvent<HTMLElement>) => {
@@ -192,9 +205,7 @@ export const FileDropInput = ({
 						<p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
 							<span className="font-semibold">Click to upload</span> or drag and drop
 						</p>
-						<p className="text-xs text-gray-500 dark:text-gray-400">
-							SVG, PNG, JPG or GIF (MAX. 800x400px)
-						</p>
+						<p className="text-xs text-gray-500 dark:text-gray-400">PNG or JPG</p>
 					</div>
 				</div>
 				<input
@@ -206,7 +217,7 @@ export const FileDropInput = ({
 					onClick={(e) => {
 						e.stopPropagation();
 					}}
-					accept=".jpg,.jpeg,.png"
+					accept={ALLOWED_IMAGE_EXTENSIONS.join(",")}
 				/>
 				{state.file && (
 					<figure className="absolute w-full h-full bg-white">
