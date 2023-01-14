@@ -3,6 +3,7 @@ import * as React from "react";
 import { Button } from "@mui/material";
 import { Grid } from "@mui/material";
 import NextLink from "next/link";
+import Typewriter from "typewriter-effect";
 
 export const LearnMoreView: NextPage = () => {
 	return (
@@ -24,7 +25,7 @@ export const LearnMoreView: NextPage = () => {
 				sm={8}
 				style={{ margin: "0 auto", height: "100vh", color: "white" }}
 			>
-				<Grid item sm={12} style={{ padding: "5%", fontFamily: "Andale Mono" }}>
+				<Grid item sm={12} style={{ padding: "5%", fontFamily: "Open Sans" }}>
 					<h1
 						className="font-bold"
 						style={{
@@ -41,11 +42,11 @@ export const LearnMoreView: NextPage = () => {
 					>
 						We are glad you are here!
 					</h1>
-					<p style={{ fontSize: "1.5em", textShadow: "2px 4px 3px rgba(0,0,0,0.3)" }}>
+					<p style={{ fontSize: "1.5em", textShadow: "2px 4px 3px rgba(0,0,0,0.3)", marginTop:"2%" }}>
 						We invite you to join our global community and monetize your photographs and
 						writing!
 					</p>
-					<p style={{ fontSize: "1.5em", textShadow: "2px 4px 3px rgba(0,0,0,0.3)" }}>
+					<p style={{ fontSize: "1.5em", textShadow: "2px 4px 3px rgba(0,0,0,0.3)", marginTop:"2%" }}>
 						Sign up here for your unique Refound name handle!
 					</p>
 					<div
@@ -76,9 +77,15 @@ export const LearnMoreView: NextPage = () => {
 					</div>
 				</Grid>
 				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
-					<h1 className="font-bold" style={{ fontSize: "2em" }}>
-						ABOUT REFOUND
-					</h1>
+					<p className="font-bold" style={{ fontSize: "0.8em" }}>
+						<Typewriter
+							options={{
+								strings: ["ABOUT REFOUND"],
+								autoStart: true,
+								loop: true,
+							}}
+						/>
+					</p>
 					<p style={{ marginBottom: "20px" }}>
 						Our goal is to bring the power of storytelling back to the creators.
 						Refound’s platform solves the compensation, inheritance, freedom of
@@ -190,7 +197,7 @@ export const LearnMoreView: NextPage = () => {
 						></img>
 					</div>
 				</Grid>
-				<Grid item sm={12} md={6} style={{ padding: "3%" }}>
+				<Grid item sm={12} md={6} style={{ padding: "5%" }}>
 					<h1 className="font-bold" style={{ fontSize: "2em" }}>
 						WHAT ARE THE BENEFITS OF MAKING MY WORK INTO AN NFT?
 					</h1>

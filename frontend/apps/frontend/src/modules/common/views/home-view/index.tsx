@@ -19,7 +19,7 @@ import  CameraIcon from "../../../../../public/assets/cameraicon.png";
 import AutomationIcon from "../../../../../public/assets/smartcontractsicon.png";
 import DecentralizedIcon from "../../../../../public/assets/decentralizedicon.png";
 import  ChainIcon from "../../../../../public/assets/beneficiaryicon.png";
-import NextImage from "next/image";
+import Image from "next/image";
 import type { NextPage } from "next";
 import { Grid, Card, CardContent, Typography, CardMedia } from "@mui/material";
 import { useEffect, useState } from "react";
@@ -84,8 +84,8 @@ export const HomeView: NextPage = () => {
 						</div>
 					</div>
 
-					<figure className="absolute top-0 bottom-0 right-0 w-[100%] z-0">
-						<NextImage src={HeroImage} layout="fill" objectFit="cover" />
+					<figure style={{width:"100%!important",height:"100%"}} className="absolute top-0 bottom-0 right-0 w-[100%] z-0">
+						<Image src={HeroImage} layout="fill" objectFit="cover" />
 						<span className="relative block w-full h-full bg-gradient-to-l from-background/80 to-background" />
 					</figure>
 				</div>
@@ -108,10 +108,10 @@ export const HomeView: NextPage = () => {
 				<Grid item md={4}></Grid>
 				<Grid item sm={12} md={4} style={{ margin: "0 2%" }}>
 					<p style={{ display: "inline-block", marginRight: "20px" }}>Powered by</p>
-					<span style={{ display: "inline-block", marginRight: "20px" }}><NextImage src={NextJsIcon} width="100" height="20" style={{ paddingRight: "20px" }}/></span>
-					<span style={{ display: "inline-block", marginRight: "20px" }}><NextImage src={NearIcon} width="100" height="20" style={{ paddingRight: "20px" }}/></span>
-					<span style={{ display: "inline-block", marginRight: "20px" }}><NextImage src={ipfsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/></span>
-					<span style={{ display: "inline-block", marginRight: "20px" }}><NextImage src={w3jsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/></span>
+					<span style={{ display: "inline-block", marginRight: "20px" }}><Image src={NextJsIcon} width="100" height="20" style={{ paddingRight: "20px" }}/></span>
+					<span style={{ display: "inline-block", marginRight: "20px" }}><Image src={NearIcon} width="100" height="20" style={{ paddingRight: "20px" }}/></span>
+					<span style={{ display: "inline-block", marginRight: "20px" }}><Image src={ipfsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/></span>
+					<span style={{ display: "inline-block", marginRight: "20px" }}><Image src={w3jsIcon} width="30" height="30" style={{ paddingRight: "20px" }}/></span>
 				</Grid>
 				<Grid item md={4}></Grid>
 			</Grid>
@@ -158,7 +158,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={JournalistIcon} width="100" height="100"/>
+							<Image src={JournalistIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -179,7 +179,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={NGOIcon} width="100" height="100"/>
+							<Image src={NGOIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -200,7 +200,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={NewsIcon} width="100" height="100"/>
+							<Image src={NewsIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -222,7 +222,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={ConsumersIcon} width="100" height="100"/>
+							<Image src={ConsumersIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -253,7 +253,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={NewsPaperIcon} width="100" height="100"/>
+							<Image src={NewsPaperIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -274,7 +274,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={WarCrimesIcon} width="100" height="100"/>
+							<Image src={WarCrimesIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -297,7 +297,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={LicenseIcon} width="100" height="100"/>
+							<Image src={LicenseIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -328,7 +328,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={PublishingIcon} width="100" height="100"/>
+							<Image src={PublishingIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -353,7 +353,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={PoWIcon} width="100" height="90"/>
+							<Image src={PoWIcon} width="100" height="90"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -378,7 +378,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={RevenueIcon} width="100" height="100"/>
+							<Image src={RevenueIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -401,7 +401,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={KeyPomIcon} width="100" height="100"/>
+							<Image src={KeyPomIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -426,7 +426,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={CameraIcon} width="100" height="70"/>
+							<Image src={CameraIcon} width="100" height="70"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -447,7 +447,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={AutomationIcon} width="100" height="100"/>
+							<Image src={AutomationIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -473,7 +473,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={DecentralizedIcon} width="100" height="100"/>
+							<Image src={DecentralizedIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -494,7 +494,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={ChainIcon} width="100" height="100"/>
+							<Image src={ChainIcon} width="100" height="100"/>
 						</CardMedia>
 					</Card>
 				</Grid>
@@ -521,7 +521,7 @@ export const HomeView: NextPage = () => {
 							</Typography>
 						</CardContent>
 						<CardMedia style={{ maxWidth: "100px", margin: "0 auto" }}>
-							<NextImage src={NearIcon} width="100" height="30"/> 
+							<Image src={NearIcon} width="100" height="30"/> 
 						</CardMedia>
 					</Card>
 				</Grid>
