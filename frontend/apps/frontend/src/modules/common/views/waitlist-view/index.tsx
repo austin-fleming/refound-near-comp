@@ -23,7 +23,9 @@ export const WaitListView: NextPage = () => {
 	const router = useRouter();
 	const [submitted , setSubmitted ] = useState();
 	const [email , setEmail ] = useState();
-	const [fullname , setFullName ] = useState();
+	const [firstname , setFirstName ] = useState();
+  const [lastname , setLastName ] = useState();
+  const [twitter , setTwitter ] = useState();
 	const [alert , setAlert ] = useState();
 
 	const formSubmit = (actions: any) => {
@@ -61,20 +63,44 @@ export const WaitListView: NextPage = () => {
                        </>
                     )}
                   </Field>
-                  <Field name="fullname">
+                  <Field name="firstname">
                     {() => (
                       <>
                         <Text>Full Name:</Text>
                         <Input
-                          value={fullname}
-                          onChange={(e:any) => setFullName(e.target.value)}
-                          placeholder="Full Name"
+                          value={firstname}
+                          onChange={(e:any) => setFirstName(e.target.value)}
+                          placeholder="First Name"
+                        />
+                       </>
+                    )}
+                  </Field>
+                  <Field name="lastname">
+                    {() => (
+                      <>
+                        <Text>Last Name:</Text>
+                        <Input
+                          value={lastname}
+                          onChange={(e:any) => setLastName(e.target.value)}
+                          placeholder="Last Name"
+                        />
+                       </>
+                    )}
+                  </Field>
+                  <Field name="twitter">
+                    {() => (
+                      <>
+                        <Text>Twitter:</Text>
+                        <Input
+                          value={twitter}
+                          onChange={(e:any) => setTwitter(e.target.value)}
+                          placeholder="Twitter Handle"
                         />
                        </>
                     )}
                   </Field>
                   <Button
-                    mt={6}
+                    mt={6} 
                     type="submit" style={{backgroundColor:"green"}}
                   >Submit
                   </Button>
