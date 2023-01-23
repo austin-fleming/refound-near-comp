@@ -7,6 +7,8 @@ import { cloin } from "@utils/styling/cloin";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import {signOut, useSession } from "next-auth/react"
+import {signIn as SignIn} from "next-auth/react"; 
 
 export const SignInView: NextPage = () => {
 	const router = useRouter();
@@ -76,7 +78,26 @@ export const SignInView: NextPage = () => {
 						verifies the credibility of NFTs.
 					</p>
 				</div>
+
+				<div className="w-full pb-[2rem]">
+					<button
+						className={cloin(
+							"btn btn-lg w-full rounded-md",
+							/* status === "no_wallet" && "btn-disabled", */
+						)}
+						onClick={() => {
+							SignIn();
+						}}
+					>
+						No Wallet Sign In 
+					</button>
+					<p className="w-full text-sm text-center pt-[0.5em] max-w-[30ch] mx-auto">
+						Sign in with Refound wallet.
+					</p>
+				</div>
 			</div>
+
+			
 
 			<div className="shadow-lg alert">
 				<div>

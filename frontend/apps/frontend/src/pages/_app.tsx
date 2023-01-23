@@ -17,18 +17,23 @@ import { PostContractsContextProvider } from "@modules/post/hooks/use-post-contr
 import { IpfsContextProvider } from "@modules/post/hooks/use-ipfs";
 // import { WalletSelectorContextProvider } from "@modules/auth/hooks/use-auth";
 
-function MyApp({ Component, pageProps }: AppProps) {
+import type { Session } from "next-auth";
+import { SessionProvider } from "next-auth/react";
+
+function MyApp({ Component, pageProps : {session, ...pageProps} }: AppProps) {
 	return (
 		<NearContextProvider>
 			<AccountContextProvider>
 				<IpfsContextProvider>
 					<PostContractsContextProvider>
-						<UIProvider>
-							<Layout>
-								<Component {...pageProps} />
-							</Layout>
-							<Toaster position="bottom-center" />
-						</UIProvider>
+						<SessionProvider session={session}>
+							<UIProvider>
+								<Layout>
+									<Component {...pageProps} />
+								</Layout>
+								<Toaster position="bottom-center" />
+							</UIProvider>
+						</SessionProvider>
 					</PostContractsContextProvider>
 				</IpfsContextProvider>
 			</AccountContextProvider>

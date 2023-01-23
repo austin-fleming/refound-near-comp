@@ -45,6 +45,7 @@
 		"formik": "^2.2.9",
 		"near-api-js": "^1.1.0",
 		"next": "12.2.5",
+		"next-auth": "^4.18.8",
 		"next-transpile-modules": "^9.0.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
