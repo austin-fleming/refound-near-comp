@@ -6,18 +6,21 @@ import { ContentSection } from "@modules/ui/content-section";
 import { cloin } from "@utils/styling/cloin";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {signOut, useSession } from "next-auth/react"
 import {signIn as SignIn} from "next-auth/react"; 
 
 export const SignInView: NextPage = () => {
 	const router = useRouter();
 	const { signIn, isSignedIn } = useAccount();
+	const {data:session, status} = useSession();
 
 	useEffect(() => {
-		if (isSignedIn) {
+		if (isSignedIn || session) {
 			router.push("/discover");
 		}
+
+		
 	}, [isSignedIn]);
 
 	return (
