@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { useEffect, useState } from "react";
 import { createContext, useContext, useMemo } from "react";
 
+import {signOut, useSession } from "next-auth/react"
 type State = {
 	adapter?: PostContractAdapter;
 };
@@ -17,7 +18,7 @@ export const usePostContracts = () => useContext(PostContractsContext);
 
 export const PostContractsContextProvider = ({ children }: { children: ReactNode }) => {
 	const { wallet, checkIsLoggedIn } = useNear();
-
+	const {data:session, status} = useSession();
 	const [adapter, setAdapter] = useState<State["adapter"]>(initialState.adapter);
 
 	useEffect(() => {
@@ -25,6 +26,7 @@ export const PostContractsContextProvider = ({ children }: { children: ReactNode
 			setAdapter(undefined);
 			return;
 		}
+
 
 		PostContractAdapter.init({ walletConnection: wallet }).then((result) => {
 			result.match({

@@ -13,10 +13,10 @@ import {signIn as SignIn} from "next-auth/react";
 export const SignInView: NextPage = () => {
 	const router = useRouter();
 	const { signIn, isSignedIn } = useAccount();
-	const {data:session, status} = useSession();
+	//const {data:session, status} = useSession();
 
 	useEffect(() => {
-		if (isSignedIn || session) {
+		if (isSignedIn) {
 			router.push("/discover");
 		}
 

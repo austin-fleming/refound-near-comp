@@ -22,22 +22,22 @@ import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps : {session, ...pageProps} }: AppProps) {
 	return (
-		<NearContextProvider>
-			<AccountContextProvider>
-				<IpfsContextProvider>
-					<PostContractsContextProvider>
-						<SessionProvider session={session}>
-							<UIProvider>
-								<Layout>
-									<Component {...pageProps} />
-								</Layout>
-								<Toaster position="bottom-center" />
-							</UIProvider>
-						</SessionProvider>
-					</PostContractsContextProvider>
-				</IpfsContextProvider>
-			</AccountContextProvider>
-		</NearContextProvider>
+		<SessionProvider session={session}>
+			<NearContextProvider>
+				<AccountContextProvider>
+					<IpfsContextProvider>
+						<PostContractsContextProvider>
+								<UIProvider>
+									<Layout>
+										<Component {...pageProps} />
+									</Layout>
+									<Toaster position="bottom-center" />
+								</UIProvider>
+						</PostContractsContextProvider>
+					</IpfsContextProvider>
+				</AccountContextProvider>
+			</NearContextProvider>
+		</SessionProvider>
 	);
 }
 
